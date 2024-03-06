@@ -9,8 +9,8 @@ const buildUrl = (url, startDate, endDate, apiKey) => {
     return `${url}?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`
 }
 
-const getAsteroidsAmount = () => {
-    https.get((buildUrl(FEED_URl, START_DATE, END_DATE, API_KEY)), (resp) => { 
+const getAsteroidsWithinPeriod = (startDate, endDate) => {
+    https.get((buildUrl(FEED_URl, startDate, endDate, API_KEY)), (resp) => { 
         let data = '';
 
         resp.on('data', (chunk) => {
@@ -19,11 +19,11 @@ const getAsteroidsAmount = () => {
 
         resp.on('end', () => {
             console.log(JSON.parse(data));
-        //   console.log(`Amount of asteroids were seen from ${START_DATE} to ${END_DATE}: ${JSON.parse(data).element_count}`);
+            console.log(`Amount of asteroids were seen from ${startDate} to ${startDate}: ${JSON.parse(data).element_count}`);
         });
     }).on("error", (err) => {
         console.log("Error: " + err.message);
       });
 }
 
-getAsteroidsAmount()
+getAsteroidsWithinPeriod(START_DATE, END_DATE)
