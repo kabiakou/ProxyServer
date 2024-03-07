@@ -12,3 +12,12 @@ https://api.nasa.gov/neo/rest/v1/feed
 
 - Start program command:
 "npm run start"
+
+- Environment
+1. Environment management:
+added "--env-file .env" to start script in package.json
+2. Useful link:
+https://www.youtube.com/watch?v=T_OlUb5YwaU
+3. Alternative:
+use "dotenv" dependency module
+link: https://www.npmjs.com/package/dotenv

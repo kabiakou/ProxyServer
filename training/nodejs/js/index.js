@@ -1,9 +1,9 @@
 const https = require('https') 
 
-const FEED_URl = "https://api.nasa.gov/neo/rest/v1/feed"
+const API_KEY = process.env.NASA_API_KEY
+const FEED_URl = process.env.NASA_API_FEED_URL
 const START_DATE = "2024-02-26"
 const END_DATE = "2024-03-01"
-const API_KEY = "KhS7EQVPfk4NLgak8tr7LgNjVNbI0Feuj4q3cMC3"
 
 const buildUrl = (url, startDate, endDate, apiKey) => {
     return `${url}?start_date=${startDate}&end_date=${endDate}&api_key=${apiKey}`
