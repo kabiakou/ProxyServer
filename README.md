@@ -8,7 +8,7 @@ https://api.nasa.gov/
 https://api.nasa.gov/neo/rest/v1/feed
 
 - Project entry point: 
-./training/nodejs/js/index.js
+index.js
 
 - Start program command:
 "npm run start"
@@ -21,3 +21,7 @@ https://www.youtube.com/watch?v=T_OlUb5YwaU
 3. Alternative:
 use "dotenv" dependency module
 link: https://www.npmjs.com/package/dotenv
+4. Env variables example file:
+see ".env.example" file
+
+-

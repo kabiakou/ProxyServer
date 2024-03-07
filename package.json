@@ -4,8 +4,11 @@
   "description": "Proxy server project",
   "main": "index.js",
   "scripts": {
-    "start": "node --env-file .env ./training/nodejs/js/index.js"
+    "start": "node --env-file .env index.js"
   },
   "author": "Kabiakou",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
 }
