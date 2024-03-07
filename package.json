@@ -3,9 +3,12 @@
   "version": "0.0.1",
   "description": "Proxy server project",
   "main": "index.js",
-  "scripts": {  
-    "start": "node ./training/nodejs/js/index.js"
+  "scripts": {
+    "start": "node --env-file .env index.js"
   },
   "author": "Kabiakou",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
 }
