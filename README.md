@@ -1,5 +1,14 @@
-1. Entry point: 
-- ./training/nodejs/js/index.js
+- Project description:
+Proxy server for NASA API
 
-2. Start program command 
-- "npm run start"
+- NASA API url:
+https://api.nasa.gov/
+
+- NASA Asteroids url:
+https://api.nasa.gov/neo/rest/v1/feed
+
+- Project entry point: 
+./training/nodejs/js/index.js
+
+- Start program command:
+"npm run start"
