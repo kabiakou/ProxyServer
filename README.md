@@ -4,7 +4,7 @@ Proxy server for NASA API
 - NASA API url:
 https://api.nasa.gov/
 
-- NASA Asteroids url:
+- NASA Meteors url:
 https://api.nasa.gov/neo/rest/v1/feed
 
 - Start server command:
@@ -42,6 +42,6 @@ nodemon
 2. Install command
 "npm install nodemon --save"
 3. Start server command:
-"nodemon --env-file .env ./js/controller/AsteroidController.js"
+"nodemon --env-file .env ./js/controller/MeteorController.js"
 4. Manual resrarting command:
 "rs" and hit "ENTER"

@@ -3,7 +3,7 @@ const axios = require('axios')
 const API_KEY = process.env.NASA_API_KEY
 const FEED_URl = process.env.NASA_API_FEED_URL
 
-const getAsteroidsWithinPeriodRequest = async (startDate, endDate) => {
+const getMeteorsWithinPeriodRequest = async (startDate, endDate) => {
     return await axios.get(FEED_URl, {
         params: {
             start_date: startDate,
@@ -18,4 +18,4 @@ const handleError = (err) => {
     console.error(`Error: ${err.message}`);
 }
 
-module.exports = { getAsteroidsWithinPeriodRequest }
+module.exports = { getMeteorsWithinPeriodRequest }

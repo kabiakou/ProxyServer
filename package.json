@@ -2,9 +2,9 @@
   "name": "proxyserver",
   "version": "0.0.1",
   "description": "Proxy server project",
-  "main": "index.js",
+  "main": "MeteorController.js",
   "scripts": {
-    "start_server": "nodemon --env-file .env ./js/controller/AsteroidController.js"
+    "start_server": "nodemon --env-file .env ./js/controller/MeteorController.js"
   },
   "author": "Kabiakou",
   "license": "ISC",
