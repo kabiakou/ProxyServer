@@ -1,11 +1,11 @@
 const dateUtils = require('../utils/DateUtils.js')
-const requestUtils = require('../utils/RequestUtils.js')
+const requestUtils = require('../client/MeteorClient.js')
 
 const monday = dateUtils.getDayOfTheCurrentWeek(1)
 const friday = dateUtils.getDayOfTheCurrentWeek(5)
 
 const getMeteorsData = async () => {
-    const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriodRequest(monday, friday)
+    const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriod(monday, friday)
     const nearEarthObjects = meteorsDataResponse.data["near_earth_objects"]
 
     return JSON.stringify(buildMeteorsDataResponse(nearEarthObjects))
