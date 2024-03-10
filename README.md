@@ -35,13 +35,3 @@ https://www.geeksforgeeks.org/moment-js-moment-day-method/
 Axios
 2. Install command: 
 "npm install axios --save"
-
-- Automatically server reloading:
-1. Module:
-nodemon
-2. Install command
-"npm install nodemon --save"
-3. Start server command:
-"nodemon --env-file .env ./js/controller/MeteorController.js"
-4. Manual resrarting command:
-"rs" and hit "ENTER"
