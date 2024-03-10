@@ -1,27 +1,41 @@
 const dateUtils = require('../utils/DateUtils.js')
 const requestUtils = require('../client/MeteorClient.js')
+const meteorMapper = require('../mapper/MeteorMapper.js')
 
+const NEAR_EARTH_OBJECTS_FIELD = "near_earth_objects"
 const monday = dateUtils.getDayOfTheCurrentWeek(1)
 const friday = dateUtils.getDayOfTheCurrentWeek(5)
 
 const getMeteorsData = async () => {
     const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriod(monday, friday)
-    const nearEarthObjects = meteorsDataResponse.data["near_earth_objects"]
+    const nearEarthObjects = meteorsDataResponse.data[NEAR_EARTH_OBJECTS_FIELD]
 
     return JSON.stringify(buildMeteorsDataResponse(nearEarthObjects))
 }
 
 const buildMeteorsDataResponse = (nearEarthObjects) => {
-    const meteorStatistics = []
+    if (nearEarthObjects === undefined) {
+        return { data: {} }
+    }
+
+    const meteorsDataResponse = []
     Object.keys(nearEarthObjects).forEach((date) => {
-        const meteorPerDate = {
-            date: date,
-            meteors_amount: nearEarthObjects[date].length
+
+        const meteors = []
+        nearEarthObjects[date].forEach((meteorStat) => {
+            meteors.push(meteorMapper.buildMeteorEntity(meteorStat))
+        })
+
+        const meteorsPerDate = {
+            data: {
+                date: date,
+                meteors: meteors
+            }
         }
-        meteorStatistics.push(meteorPerDate)
+        meteorsDataResponse.push(meteorsPerDate)
     })
 
-    return meteorStatistics
+    return meteorsDataResponse
 }
 
 module.exports = { getMeteorsData }
