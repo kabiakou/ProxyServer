@@ -1,6 +1,6 @@
 const dateUtils = require('../utils/DateUtils.js')
-const requestUtils = require('../client/MeteorClient.js')
-const meteorMapper = require('../mapper/MeteorMapper.js')
+const requestUtils = require('../clients/MeteorClient.js')
+const meteorMapper = require('../mappers/MeteorMapper.js')
 
 const NEAR_EARTH_OBJECTS_FIELD = "near_earth_objects"
 const monday = dateUtils.getDayOfTheCurrentWeek(1)

@@ -4,7 +4,7 @@
   "description": "Proxy server project",
   "main": "MeteorController.js",
   "scripts": {
-    "start_server": "node --watch --env-file .env ./js/controller/MeteorController.js"
+    "start_server": "node --watch --env-file .env ./js/app.js"
   },
   "author": "Kabiakou",
   "license": "ISC",
