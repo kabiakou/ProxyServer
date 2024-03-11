@@ -4,7 +4,11 @@ const meteorService = require('../services/MeteorService.js')
 
 
 router.get('/', async (req, res) => {
-    res.send(await meteorService.getMeteorsData())
+    try {
+        res.json(await meteorService.getMeteorsData())
+    } catch (error) {
+        res.status(500).send(error)
+    }
 })
 
 
