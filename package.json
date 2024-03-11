@@ -2,7 +2,7 @@
   "name": "proxyserver",
   "version": "0.0.1",
   "description": "Proxy server project",
-  "main": "MeteorController.js",
+  "main": "app.js",
   "scripts": {
     "start_server": "node --watch --env-file .env ./js/app.js"
   },
