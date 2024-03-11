@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const meteorService = require('../services/MeteorService.js')
+const meteorService = require('../services/MeteorService')
 
 
 router.get('/', async (req, res) => {
@@ -11,6 +11,4 @@ router.get('/', async (req, res) => {
     }
 })
 
-
 module.exports = router
-

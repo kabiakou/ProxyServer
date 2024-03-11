@@ -1,6 +1,6 @@
-const dateUtils = require('../utils/DateUtils.js')
-const requestUtils = require('../clients/MeteorClient.js')
-const meteorMapper = require('../mappers/MeteorMapper.js')
+const dateUtils = require('../utils/DateUtils')
+const requestUtils = require('../clients/MeteorClient')
+const meteorMapper = require('../mappers/MeteorMapper')
 
 const monday = dateUtils.getDayOfTheCurrentWeek(1)
 const friday = dateUtils.getDayOfTheCurrentWeek(5)
