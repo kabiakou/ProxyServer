@@ -21,11 +21,11 @@ link: https://www.npmjs.com/package/dotenv
 4. Env variables example file:
 see ".env.example" file
 
-- Moment.js library:
+- date-nfs library:
 1. link: 
-https://momentjs.com/
-2. moment().day() method:
-https://www.geeksforgeeks.org/moment-js-moment-day-method/
+https://date-fns.org/
+2. install command:
+"npm install date-fns --save"
 
 - Express framework install command:
 "npm instal express --save"

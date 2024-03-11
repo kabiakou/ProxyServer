@@ -1,10 +1,11 @@
-const moment = require('moment')
+const { previousMonday, previousFriday, format } = require("date-fns")
 
-const DATE_TEMPLATE = 'YYYY-MM-DD'
-const now = moment()
+const DATE_FORMAT = "yyyy-MM-dd"
 
-const getDayOfTheCurrentWeek = (dayNumber) => {
-    return now.day(dayNumber).format(DATE_TEMPLATE)
-}
+const previousFridayDateTime = previousFriday(new Date())
+const previousMondayDateTime = previousMonday(previousFridayDateTime)
 
-module.exports = { getDayOfTheCurrentWeek };
+const previousMondayDate = format(previousMondayDateTime, DATE_FORMAT)
+const previousFridayDate = format(previousFridayDateTime, DATE_FORMAT)
+
+module.exports = { previousMondayDate, previousFridayDate };
