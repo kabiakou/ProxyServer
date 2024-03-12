@@ -6,12 +6,21 @@ const PORT = process.env.PORT
 
 app.use('/meteors', meteorRoute)
 
-app.use((req, res) => {
-    res
-        .status(404)
-        .send("Resourse not found. Try another one.")
+app.use((error, req, res, next) => {
+    statusCode = error.statusCode || 500
+    res.status(statusCode).json({
+        code: statusCode,
+        message: error.message
+    })
+
 })
 
+app.use((req, res) => {
+    res.status(404).json({
+        code: 404,
+        message: "Page not found. Try another one."
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`)
