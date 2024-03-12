@@ -8,7 +8,6 @@ const validateStartDate = (startDate) => {
         }
         new Date(startDate).toISOString()
     } catch (error) {
-        console.log(error)
         throw new ValidationException(400, 'Parameter "startDate" should have format yyyy-MM-dd. Ex: 2024-03-04')
     }
 }
@@ -26,7 +25,6 @@ const validateEndDate = (endDate) => {
 
 const validateStartDateIsNotLargerThanEndDate = (startDate, endDate) => {
     if (endDate === undefined || startDate === undefined) {
-        console.log("return")
         return
     }
     const startDateTime = new Date(startDate)
