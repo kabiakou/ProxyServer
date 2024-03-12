@@ -7,12 +7,11 @@ const PORT = process.env.PORT
 app.use('/meteors', meteorRoute)
 
 app.use((error, req, res, next) => {
-    statusCode = error.statusCode || 500
+    statusCode = error.code || 500
     res.status(statusCode).json({
         code: statusCode,
         message: error.message
     })
-
 })
 
 app.use((req, res) => {

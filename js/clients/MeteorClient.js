@@ -11,11 +11,6 @@ const getMeteorsWithinPeriod = async (startDate, endDate) => {
             api_key: API_KEY
         }
     })
-        .catch(handleError)
-}
-
-const handleError = (err) => {
-    console.error(`Error: ${err.message}`);
 }
 
 module.exports = { getMeteorsWithinPeriod }

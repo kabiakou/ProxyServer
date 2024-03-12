@@ -2,11 +2,11 @@ const { previousMondayDate, previousFridayDate } = require('../utils/DateUtils')
 const requestUtils = require('../clients/MeteorClient')
 const meteorMapper = require('../mappers/MeteorMapper')
 
-const startDate = previousMondayDate
-const endDate = previousFridayDate
+const getMeteorsData = async (meteorDto) => {
+    const a = specifyDates(meteorDto)
 
-const getMeteorsData = async () => {
-    const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriod(startDate, endDate)
+    const meteorsDataResponse = await requestUtils
+        .getMeteorsWithinPeriod(a.startDate, a.endDate)
     const nearEarthObjects = meteorsDataResponse.data.near_earth_objects
 
     return buildMeteorsDataResponse(nearEarthObjects)
@@ -35,6 +35,20 @@ const buildMeteorsDataResponse = (nearEarthObjects) => {
     })
 
     return meteorsDataResponse
+}
+
+const specifyDates = (meteorDto) => {
+    const startDate = meteorDto.startDate
+    const endDate = meteorDto.endDate
+
+    if (startDate === undefined && endDate !== undefined) {
+        meteorDto.startDate = endDate
+    }
+
+    if (endDate === undefined && startDate !== undefined) {
+        meteorDto.endDate = startDate
+    }
+    return meteorDto
 }
 
 module.exports = { getMeteorsData }
