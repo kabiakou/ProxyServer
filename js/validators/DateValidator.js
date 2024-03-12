@@ -1,35 +1,22 @@
-const { compareAsc } = require("date-fns")
+const { compareAsc, isMatch } = require("date-fns")
 const ValidationException = require('../exceptions/ValidationException')
 
+const DATE_FORMAT = 'yyyy-MM-dd'
+
 const validateStartDate = (startDate) => {
-    try {
-        if (startDate === undefined) {
-            return
-        }
-        new Date(startDate).toISOString()
-    } catch (error) {
+    if (startDate !== undefined && !isMatch(startDate, DATE_FORMAT)) {
         throw new ValidationException(400, 'Parameter "startDate" should have format yyyy-MM-dd. Ex: 2024-03-04')
     }
 }
 
 const validateEndDate = (endDate) => {
-    try {
-        if (endDate === undefined) {
-            return
-        }
-        new Date(endDate).toISOString()
-    } catch (error) {
+    if (endDate !== undefined && !isMatch(endDate, DATE_FORMAT)) {
         throw new ValidationException(400, 'Parameter "endDate" should have format yyyy-MM-dd. Ex: 2024-03-04')
     }
 }
 
 const validateStartDateIsNotLargerThanEndDate = (startDate, endDate) => {
-    if (endDate === undefined || startDate === undefined) {
-        return
-    }
-    const startDateTime = new Date(startDate)
-    const endDateTime = new Date(endDate)
-    if (compareAsc(endDate, startDate) == -1) {
+    if (endDate !== undefined && startDate !== undefined && compareAsc(endDate, startDate) == -1) {
         throw new ValidationException(400, 'Parameter "endDate" should be larger or equal than parameter "startDate"')
     }
 }
