@@ -42,11 +42,9 @@ const buildMeteorsDataResponse = (nearEarthObjects, updatedMeteor) => {
 const specifyDates = (meteorDto) => {
     const startDate = meteorDto.startDate
     const endDate = meteorDto.endDate
-
     if (startDate === undefined && endDate !== undefined) {
         meteorDto.startDate = endDate
     }
-
     if (endDate === undefined && startDate !== undefined) {
         meteorDto.endDate = startDate
     }
