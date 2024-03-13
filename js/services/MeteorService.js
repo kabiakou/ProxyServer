@@ -15,7 +15,7 @@ const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
         return { data: {} }
     }
 
-    let wereDangerous = undefined
+    let wereDangerous = false
     const meteorsDataResponse = []
     Object.keys(nearEarthObjects).forEach((date) => {
         const startCount = 0
@@ -34,7 +34,7 @@ const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
     return {
         data: {
             mete: meteorsDataResponse,
-            were_dangerous: wereDangerous
+            were_dangerous: wereDangerous ? wereDangerous : undefined
         }
     }
 }

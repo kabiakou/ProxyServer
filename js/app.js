@@ -1,5 +1,5 @@
 const express = require('express')
-const meteorRoute = require('./routes/MeteorRoute.js')
+const meteorRoute = require('./routes/MeteorRoute')
 
 const app = express()
 const PORT = process.env.PORT
