@@ -5,6 +5,7 @@ const MeteorDto = require('../dtos/MeteorDto')
 
 const dateValidator = require('../validators/DateValidator')
 const countValidator = require('../validators/CountValidator')
+const wereDangerousValidator = require('../validators/WereDangerousValidator')
 
 router.get('/', (req, res, next) => {
     const quieryParams = req.query
@@ -15,6 +16,7 @@ router.get('/', (req, res, next) => {
     dateValidator.validateEndDate(endDateParam)
     dateValidator.validateStartDateIsNotLargerThanEndDate(startDateParam, endDateParam)
     countValidator.validateIsLessThanMaxValue(quieryParams.count)
+    wereDangerousValidator.validateWereDangerous(quieryParams.were_dangerous)
     next()
 }, async (req, res, next) => {
     try {

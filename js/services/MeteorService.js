@@ -1,13 +1,13 @@
 const requestUtils = require('../clients/MeteorClient')
+const MeteorPerDateDto = require('../dtos/MeteorPerDateDto')
 const meteorMapper = require('../mappers/MeteorMapper')
 
-const getMeteorsData = async (meteorDto) => {
-    const updatedMeteor = specifyDates(meteorDto)
-    const meteorsDataResponse = await requestUtils
-        .getMeteorsWithinPeriod(updatedMeteor.startDate, updatedMeteor.endDate)
+const getMeteorsData = async (meteor) => {
+    const meteorDto = specifyDates(meteor)
+    const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriod(meteorDto.startDate, meteorDto.endDate)
     const nearEarthObjects = meteorsDataResponse.data.near_earth_objects
 
-    return buildMeteorsDataResponse(nearEarthObjects, updatedMeteor)
+    return buildMeteorsDataResponse(nearEarthObjects, meteorDto)
 }
 
 const buildMeteorsDataResponse = (nearEarthObjects, updatedMeteor) => {
@@ -15,26 +15,28 @@ const buildMeteorsDataResponse = (nearEarthObjects, updatedMeteor) => {
         return { data: {} }
     }
 
+    let wereDangerous = undefined
     const meteorsDataResponse = []
     Object.keys(nearEarthObjects).forEach((date) => {
-        const start = 0
+        const startCount = 0
         const meteors = []
         nearEarthObjects[date]
-            .slice(start, updatedMeteor.count)
+            .slice(startCount, updatedMeteor.count)
             .forEach((meteorStat) => {
                 meteors.push(meteorMapper.buildMeteorEntity(meteorStat))
+                if (updatedMeteor.wereDangerous !== undefined && wereDangerous !== true) {
+                    wereDangerous = meteorStat.is_potentially_hazardous_asteroid
+                }
             })
-
-        const meteorsPerDate = {
-            data: {
-                date: date,
-                meteors: meteors
-            }
-        }
-        meteorsDataResponse.push(meteorsPerDate)
+        meteorsDataResponse.push(new MeteorPerDateDto(date, meteors))
     })
 
-    return meteorsDataResponse
+    return {
+        data: {
+            mete: meteorsDataResponse,
+            were_dangerous: wereDangerous
+        }
+    }
 }
 
 const specifyDates = (meteorDto) => {
