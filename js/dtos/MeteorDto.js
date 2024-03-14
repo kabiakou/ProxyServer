@@ -36,8 +36,7 @@ const specifyEndDate = (data) => {
 }
 
 const specifyWereDangerous = (data) => {
-  const wereDangerous = data.were_dangerous
-  return wereDangerous !== undefined && wereDangerous.toLowerCase() === 'true'
+  return data.were_dangerous === 'true'
 }
 
 module.exports = MeteorDto
