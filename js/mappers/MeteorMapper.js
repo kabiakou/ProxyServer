@@ -1,5 +1,5 @@
 const buildMeteorEntity = (meteorStatistic) => {
-    
+
     closeApproachDates = []
     relativeVelocityKmPerSeconds = []
     const closeApproachData = meteorStatistic.close_approach_data
