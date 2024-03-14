@@ -3,7 +3,7 @@ class MeteorDto {
     this.startDate = specifyStartDate(data)
     this.endDate = specifyEndDate(data)
     this.count = data.count
-    this.wereDangerous = data.were_dangerous
+    this.wereDangerous = specifyWereDangerous(data)
   }
 }
 
@@ -17,6 +17,11 @@ const specifyEndDate = (data) => {
   const startDate = data.startDate
   const endDate = data.endDate
   return endDate === undefined && startDate !== undefined ? startDate : endDate
+}
+
+const specifyWereDangerous = (data) => {
+  const wereDangerous = data.wereDangerous
+  return wereDangerous !== undefined && wereDangerous.toLowerCase() === 'true'
 }
 
 module.exports = MeteorDto
