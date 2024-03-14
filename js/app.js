@@ -1,10 +1,15 @@
 const express = require('express')
 const meteorRoute = require('./routes/MeteorRoute')
+const roverRoute = require('./routes/RoverRoute')
 
 const app = express()
 const PORT = process.env.PORT
 
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+
 app.use('/meteors', meteorRoute)
+app.use('/rover', roverRoute)
 
 app.use((error, req, res, next) => {
     statusCode = error.code || 500
