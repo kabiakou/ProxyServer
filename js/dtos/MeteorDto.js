@@ -13,6 +13,9 @@ const specifyStartDate = (data) => {
   const defaultPeriod = 1
   const startDate = data.start_date
   const endDate = data.end_date
+  if (startDate === undefined && endDate === undefined) {
+    return new Date()
+  }
   if (startDate === undefined && endDate !== undefined) {
     return subWeeks(endDate, defaultPeriod)
   }
@@ -23,6 +26,9 @@ const specifyEndDate = (data) => {
   const defaultPeriod = 1
   const startDate = data.start_date
   const endDate = data.end_date
+  if (startDate === undefined && endDate === undefined) {
+    return new Date()
+  }
   if (endDate === undefined && startDate !== undefined) {
     return addWeeks(startDate, defaultPeriod)
   }
