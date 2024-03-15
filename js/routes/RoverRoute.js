@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const { getRecentPicture } = require('../controllers/RoverController')
+const { getRecentPhoto } = require('../controllers/RoverController')
 
-router.post('/', getRecentPicture)
+router.post('/', getRecentPhoto)
 
 module.exports = router

@@ -1,10 +1,9 @@
 const roverService = require('../services/RoverService')
 const UserDto = require('../dtos/UserDto')
 
-const getRecentPicture = async (req, res, next) => {
+const getRecentPhoto = async (req, res, next) => {
     try {
-        const requestBody = req.body
-        const userDto = new UserDto(requestBody)
+        const userDto = new UserDto(req.body)
         const photoLink = await roverService.getRecentPhoto(userDto)
         res.redirect(photoLink)
     } catch (error) {
@@ -12,4 +11,4 @@ const getRecentPicture = async (req, res, next) => {
     }
 }
 
-module.exports = { getRecentPicture }
+module.exports = { getRecentPhoto }
