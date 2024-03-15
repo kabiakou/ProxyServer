@@ -42,6 +42,12 @@ Axios
 2. Install command: 
 "npm install axios --save"
 
+- Code validation library
+1. Library
+Joi
+2. Install command: 
+"npm install joi --save"
+
 API:
 ---------
 ## Get recent photo ##
@@ -64,4 +70,14 @@ count
 were_dangerous (value: true)
 - Request example:
 http://localhost:4000/meteors?start_date=2024-03-13&end_date=2024-03-14&count=1&were_dangerous=true
+
+## Get rover request params ##
+- Request:
+GET /meteors/
+- Request params:
+user_id
+user_name
+api_key
+- Request example:
+http://localhost:4000/rover?user_id=testId&user_name=testName&api_key=testApiKey
 ---------
