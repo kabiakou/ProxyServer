@@ -14,14 +14,12 @@ app.use('/rover', roverRoute)
 app.use((error, req, res, next) => {
     statusCode = error.code || 500
     res.status(statusCode).json({
-        code: statusCode,
         message: error.message
     })
 })
 
 app.use((req, res) => {
     res.status(404).json({
-        code: 404,
         message: "Page not found. Try another one."
     })
 })

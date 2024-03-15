@@ -7,7 +7,7 @@ const { validate } = require('../validators/SchemaValidator')
 router
     .post('/', validate(schemas.userDto, 'body'), getRecentPhoto)
     // added additional GET enpoint just within Joi studing 
-    .get('/', validate(schemas.userDto, 'request'),
+    .get('/', validate(schemas.userDto, 'query'),
         async (req, res, next) => {
             try {
                 res.json(req.query)
