@@ -1,11 +1,17 @@
 - Project description:
 Proxy server for NASA API
 
-- NASA API url:
+- NASA base url:
 https://api.nasa.gov/
 
 - NASA Meteors url:
 https://api.nasa.gov/neo/rest/v1/feed
+
+- NASA Curiosity rover photos url:
+https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos
+
+- NASA Curiosity rover manifest url:
+https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity
 
 - Start server command:
 "npm run start_server"
@@ -36,5 +42,26 @@ Axios
 2. Install command: 
 "npm install axios --save"
 
+API:
+---------
+## Get recent photo ##
+- Request:
+POST /rover/
+- Request body example:
+{
+    "user_id": "user id",
+    "user_name": "user name",
+    "api_key": "any key api"
+}
 
-
+## Get meteors ##
+- Request:
+GET /meteors/
+- Request params:
+start_date (format: yyyy-MM-dd)
+end_date (format: yyyy-MM-dd)
+count
+were_dangerous (value: true)
+- Request example:
+http://localhost:4000/meteors?start_date=2024-03-13&end_date=2024-03-14&count=1&were_dangerous=true
+---------
