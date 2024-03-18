@@ -31,23 +31,28 @@ see ".env.example" file
 1. link: 
 https://date-fns.org/
 2. install command:
-"npm install date-fns --save"
+"npm i date-fns --save"
 
 - Express framework install command:
-"npm instal express --save"
+"npm i express --save"
 
 - Https client:
 1. library:
 Axios
 2. Install command: 
-"npm install axios --save"
+"npm i axios --save"
 
 - Code validation library
 1. Library
 Joi
 2. Install command: 
-"npm install joi --save"
+"npm i joi --save"
 
+- Template response framework:
+1. Library
+nunjacks
+2. Install command: 
+"npm i nunjacks --save"
 API:
 ---------
 ## Get recent photo ##
