@@ -8,8 +8,10 @@ const getMeteors = async (req, res, next) => {
         const meteorsData = await meteorService.getMeteorsData(meteorDto)
         res.render('index.html', {
             meteorsData: meteorsData.data.meteors,
-            wereDangerousValue: meteorsData.data.were_dangerous,
-            wereDangerousParam: req.query.were_dangerous
+            wereDangerous: {
+                value: meteorsData.data.were_dangerous,
+                param: req.query.were_dangerous
+            }
         })
     } catch (error) {
         next(error)

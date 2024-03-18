@@ -13,7 +13,6 @@ app.use('/meteors', meteorRoute)
 app.use('/rover', roverRoute)
 
 app.set("view engine", "html")
-
 nunjucks.configure(['views/'], {
     autoescape: false,
     express: app,
