@@ -32,7 +32,7 @@ const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
 
     return {
         data: {
-            mete: meteorsDataResponse,
+            meteors: meteorsDataResponse,
             were_dangerous: meteorDto.wereDangerous ? wereDangerous : undefined
         }
     }

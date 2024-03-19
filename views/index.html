@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        {% for meteorData in meteorsData %}
+        <div style="font-weight: bold;">Date: {{ meteorData.date }}</div>
+        <div style="font-weight: bold;">List of meteors:</div>
+            {% for meteor in meteorData.meteors %}
+                <li>Id: {{ meteor.id }}</li>
+                <li>Name: {{ meteor.name }}</li>
+                <li>Diameter meters:</li>
+                <li>Estimated diameter min: {{ meteor.diameter_meters.estimated_diameter_min }}</li>
+                <li>Estimated diameter max: {{ meteor.diameter_meters.estimated_diameter_max }}</li>
+                <li>Is potentially hazardous asteroid: {{ meteor.is_potentially_hazardous_asteroid }}</li>
+                <li>Approach dull date: {{ meteor.close_approach_date_full }}</li>
+                <li>Relative velocity in km per second: {{ meteor.relative_velocity_in_km_per_second }}</li>
+                <br>
+            {% endfor %}
+        {% endfor %}
+        {% if wereDangerous.param %}
+            <div style="font-weight: bold;">Were dangerous meteors: {{ wereDangerous.value }}</div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
