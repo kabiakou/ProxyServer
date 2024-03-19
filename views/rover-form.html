@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/rover/form/response" method="post">
+        <label for="user_id">{{ userIdLabel }} </label>
+        <input id="user_id" type="text" name="user_id" />
+        <br>
+        <label for="user_name">{{ userNameLabel }} </label>
+        <input id="user_name" type="text" name="user_name" />
+        <br>
+        <label for="api_key">{{ userApiKeyLabel }} </label>
+        <input id="api_key" type="text" name="api_key" />
+        <br>
+        <input type="submit" value="OK" />
+    </form>
+</body>
+
+</html>
