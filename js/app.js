@@ -2,6 +2,7 @@ const express = require('express')
 const meteorRoute = require('./routes/MeteorRoute')
 const roverRoute = require('./routes/RoverRoute')
 const nunjucks = require('nunjucks')
+const path = require('path');
 
 const app = express()
 const PORT = process.env.PORT
@@ -11,6 +12,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/meteors', meteorRoute)
 app.use('/rover', roverRoute)
+
+app.set('views', path.join(__dirname, 'views'));
 
 app.set("view engine", "html")
 nunjucks.configure(['views/'], {

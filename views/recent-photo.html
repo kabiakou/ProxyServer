@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% if userId %}
+        <div">User id: {{ userId }}</div>
+        <br>
+    {% endif %}
+    {% if userName %}
+        <div">User name: {{ userName }}</div>
+        <br>
+    {% endif %}
+    <div style="font-weight: bold;">Recent photo:</div>
+    <br>
+    <img src={{ recentPhotoLink }} width="500" height="600">
+{% endblock %}

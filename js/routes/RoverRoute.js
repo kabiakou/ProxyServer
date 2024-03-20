@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const schemas = require('../validators/schemas/ValidationSchema')
-const { getRecentPhoto } = require('../controllers/RoverController')
+const { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm } = require('../controllers/RoverController')
 const { validate } = require('../validators/SchemaValidator')
 
 router
@@ -14,6 +14,8 @@ router
             } catch (error) {
                 next(error)
             }
-        })
+        })    
+    .get('/form', getRoverForm)
+    .post('/form/response', getRecentPhotoRoverForm)
 
 module.exports = router
