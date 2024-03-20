@@ -67,6 +67,8 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 4. Install command:
 - install and configure ESLint - "npm init @eslint/config"
 - install eslint-config-airbnb-base - "npm install --save-dev eslint-config-airbnb-base"
+5. Eslint plugin for VSCode:
+- In VSCode, open the extension browser with the button on the left. Search for eslint. Install the top result, called “ESLint”
 
 API:
 ---------
