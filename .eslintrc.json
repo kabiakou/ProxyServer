@@ -14,7 +14,7 @@
     "rules": {
         "quotes": [
             "error",
-            "single"
+            "double"
         ],
         // windows linebreak style
         "linebreak-style": [
