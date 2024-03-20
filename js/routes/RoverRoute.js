@@ -1,12 +1,13 @@
 const express = require('express')
-const router = express.Router()
 const schemas = require('../validators/schemas/ValidationSchema')
+
+const router = express.Router()
 const { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm } = require('../controllers/RoverController')
 const { validate } = require('../validators/SchemaValidator')
 
 router
     .post('/', validate(schemas.userDto, 'body'), getRecentPhoto)
-    // added additional GET enpoint just within Joi studing 
+    // added additional GET enpoint just within Joi studing
     .get('/', validate(schemas.userDto, 'query'),
         async (req, res, next) => {
             try {
@@ -14,7 +15,7 @@ router
             } catch (error) {
                 next(error)
             }
-        })    
+        })
     .get('/form', getRoverForm)
     .post('/form/response', getRecentPhotoRoverForm)
 

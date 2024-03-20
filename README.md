@@ -53,6 +53,21 @@ Joi
 nunjacks
 2. Install command: 
 "npm i nunjacks --save"
+
+- Code analyzer
+1. Tool:
+ESlint
+2. ESlint settings file:
+.eslintrc.json
+3. Packages:
+- "ESLint" - ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
+LinK - https://www.npmjs.com/package/eslint
+- "eslint-config-airbnb-base" - this package provides Airbnb's base JS .eslintrc (without React plugins) as an extensible shared config.
+Link - https://www.npmjs.com/package/eslint-config-airbnb-base
+4. Install command:
+- install and configure ESLint - "npm init @eslint/config"
+- install eslint-config-airbnb-base - "npm install --save-dev eslint-config-airbnb-base"
+
 API:
 ---------
 ## Get recent photo ##

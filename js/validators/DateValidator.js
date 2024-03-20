@@ -1,4 +1,4 @@
-const { compareAsc, isMatch } = require("date-fns")
+const { compareAsc, isMatch } = require('date-fns')
 const ValidationException = require('../exceptions/ValidationException')
 
 const DATE_FORMAT = process.env.DATE_FORMAT
