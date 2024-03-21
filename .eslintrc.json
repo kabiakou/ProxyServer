@@ -1,0 +1,68 @@
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    // custom rules for supporting VCS default formatter
+    "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        // windows linebreak style
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
+        // disallows semicolon in the end of line
+        "semi": [
+            "error",
+            "never"
+        ],
+        // allows size of indentation
+        "indent": [
+            "error",
+            4
+        ],
+        // disallows the last empty line
+        "eol-last": [
+            "error",
+            "never"
+        ],
+        // disallows trailing commas
+        "comma-dangle": [
+            "error",
+            "never"
+        ],
+        "max-len": [
+            "warn",
+            {
+                "code": 120
+            }
+        ],
+        "camelcase": "warn",
+        "prefer-destructuring": "warn",
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
+        "no-return-await": "off",
+        "function-paren-newline": [
+            "error",
+            "never"
+        ],
+        "function-call-argument-newline": "off",
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
+        "object-shorthand": "off",
+        "arrow-parens": "off",
+        "eqeqeq": "warn"
+    }
+}

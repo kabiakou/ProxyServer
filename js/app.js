@@ -1,8 +1,8 @@
 const express = require('express')
+const nunjucks = require('nunjucks')
+const path = require('path')
 const meteorRoute = require('./routes/MeteorRoute')
 const roverRoute = require('./routes/RoverRoute')
-const nunjucks = require('nunjucks')
-const path = require('path');
 
 const app = express()
 const PORT = process.env.PORT
@@ -13,17 +13,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use('/meteors', meteorRoute)
 app.use('/rover', roverRoute)
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views'))
 
-app.set("view engine", "html")
+app.set('view engine', 'html')
 nunjucks.configure(['views/'], {
     autoescape: false,
     express: app,
-    noCache: true,
+    noCache: true
 })
 
 app.use((error, req, res, next) => {
-    statusCode = error.code || 500
+    const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message
     })
@@ -31,7 +31,7 @@ app.use((error, req, res, next) => {
 
 app.use((req, res) => {
     res.status(404).json({
-        message: "Page not found. Try another one."
+        message: 'Page not found. Try another one.'
     })
 })
 

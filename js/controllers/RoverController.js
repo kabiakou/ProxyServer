@@ -14,9 +14,9 @@ const getRecentPhoto = async (req, res, next) => {
 const getRoverForm = async (req, res, next) => {
     try {
         res.render('rover-form', {
-            userIdLabel: "User Id:",
-            userNameLabel: "User name:",
-            userApiKeyLabel: "User Api key:",
+            userIdLabel: 'User Id:',
+            userNameLabel: 'User name:',
+            userApiKeyLabel: 'User Api key:'
         })
     } catch (error) {
         next(error)
@@ -31,7 +31,7 @@ const getRecentPhotoRoverForm = async (req, res, next) => {
         res.render('recent-photo', {
             recentPhotoLink: photoLink,
             userId: request.user_id,
-            userName: request.user_name,
+            userName: request.user_name
         })
     } catch (error) {
         next(error)
