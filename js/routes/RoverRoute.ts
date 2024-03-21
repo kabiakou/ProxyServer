@@ -1,11 +1,11 @@
-const express = require('express')
-const schemas = require('../validators/schemas/ValidationSchema')
+import * as express from 'express'
+import { schemas } from '../validators/schemas/ValidationSchema'
 
-const router = express.Router()
+export const roverRouter = express.Router()
 const { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm } = require('../controllers/RoverController')
 const { validate } = require('../validators/SchemaValidator')
 
-router
+roverRouter
     .post('/', validate(schemas.userDto, 'body'), getRecentPhoto)
     // added additional GET enpoint just within Joi studing
     .get('/', validate(schemas.userDto, 'query'),
@@ -18,5 +18,3 @@ router
         })
     .get('/form', getRoverForm)
     .post('/form/response', getRecentPhotoRoverForm)
-
-module.exports = router

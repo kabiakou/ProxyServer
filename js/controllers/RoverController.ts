@@ -1,17 +1,17 @@
-const roverService = require('../services/RoverService')
-const UserDto = require('../dtos/UserDto')
+import { getRecentPhoto as getRecPhoto } from '../services/RoverService'
+import { UserDto } from '../dtos/UserDto'
 
-const getRecentPhoto = async (req, res, next) => {
+export const getRecentPhoto = async (req, res, next) => {
     try {
         const userDto = new UserDto(req.body)
-        const photoLink = await roverService.getRecentPhoto(userDto)
+        const photoLink = await getRecPhoto(userDto)
         res.redirect(photoLink)
     } catch (error) {
         next(error)
     }
 }
 
-const getRoverForm = async (req, res, next) => {
+export const getRoverForm = async (req, res, next) => {
     try {
         res.render('rover-form', {
             userIdLabel: 'User Id:',
@@ -23,7 +23,7 @@ const getRoverForm = async (req, res, next) => {
     }
 }
 
-const getRecentPhotoRoverForm = async (req, res, next) => {
+export const getRecentPhotoRoverForm = async (req, res, next) => {
     try {
         const request = req.body
         const userDto = new UserDto(request)
@@ -37,5 +37,3 @@ const getRecentPhotoRoverForm = async (req, res, next) => {
         next(error)
     }
 }
-
-module.exports = { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm }

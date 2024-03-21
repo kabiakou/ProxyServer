@@ -72,6 +72,15 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 6. ATTENTION - .eslintrc.json file is very sensitive to json format. In case of incorrect line (incorrect json format) all rules will be disabled.
 7. VSC "PROBLEMS" tab on toggle panel display errors and warnings
 
+- Typescript migration:
+1. typescript compiler install command:
+"npm install --save-dev typescript"
+2. Add a simple tsconfig.json that set the options to compile to ES5 and use CommonJS modules.
+3. To use tsconfig.json for the rest of this tutorial, invoke tsc without input files.
+4. 
+"npm i -D ts-node @types/node @types/express @types/express-handlebars"
+npm install --save-dev @types/joi
+
 API:
 ---------
 ## Get recent photo ##

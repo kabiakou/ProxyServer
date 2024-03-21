@@ -1,11 +1,11 @@
-const meteorService = require('../services/MeteorService')
-const MeteorDto = require('../dtos/MeteorDto')
+import { getMeteorsData } from '../services/MeteorService'
+import { MeteorDto } from '../dtos/MeteorDto'
 
-const getMeteors = async (req, res, next) => {
+export const getMeteors = async (req, res, next) => {
     try {
         const requestParameters = req.query
         const meteorDto = new MeteorDto(requestParameters)
-        const meteorsData = await meteorService.getMeteorsData(meteorDto)
+        const meteorsData = await getMeteorsData(meteorDto)
         res.render('index.html', {
             meteorsData: meteorsData.data.meteors,
             wereDangerous: {
@@ -14,8 +14,7 @@ const getMeteors = async (req, res, next) => {
             }
         })
     } catch (error) {
+        console
         next(error)
     }
 }
-
-module.exports = { getMeteors }

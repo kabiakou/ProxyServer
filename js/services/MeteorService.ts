@@ -1,15 +1,16 @@
-const requestUtils = require('../clients/MeteorClient')
-const MeteorPerDateDto = require('../dtos/MeteorPerDateDto')
-const meteorMapper = require('../mappers/MeteorMapper')
+import { getMeteorsWithinPeriod } from '../clients/MeteorClient'
+import { MeteorDto } from '../dtos/MeteorDto'
+import { MeteorPerDateDto } from '../dtos/MeteorPerDateDto'
+import { buildMeteorEntity } from '../mappers/MeteorMapper'
 
-const getMeteorsData = async (meteor) => {
-    const meteorsDataResponse = await requestUtils.getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
+export const getMeteorsData = async (meteor: MeteorDto) => {
+    const meteorsDataResponse = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
     const nearEarthObjects = meteorsDataResponse.data.near_earth_objects
 
     return buildMeteorsDataResponse(nearEarthObjects, meteor)
 }
 
-const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
+const buildMeteorsDataResponse = (nearEarthObjects, meteorDto: MeteorDto) => {
     if (nearEarthObjects === undefined) {
         return { data: {} }
     }
@@ -22,7 +23,7 @@ const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
         nearEarthObjects[date]
             .slice(startCount, meteorDto.count)
             .forEach((meteorStat) => {
-                meteors.push(meteorMapper.buildMeteorEntity(meteorStat))
+                meteors.push(buildMeteorEntity(meteorStat))
                 if (meteorDto.wereDangerous !== undefined && wereDangerous !== true) {
                     wereDangerous = meteorStat.is_potentially_hazardous_asteroid
                 }
@@ -37,5 +38,3 @@ const buildMeteorsDataResponse = (nearEarthObjects, meteorDto) => {
         }
     }
 }
-
-module.exports = { getMeteorsData }

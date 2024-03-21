@@ -1,4 +1,4 @@
-const buildMeteorEntity = (meteorStatistic) => {
+export const buildMeteorEntity = (meteorStatistic) => {
     const closeApproachDates = []
     const relativeVelocityKmPerSeconds = []
     const closeApproachData = meteorStatistic.close_approach_data
@@ -23,5 +23,3 @@ const buildMeteorEntity = (meteorStatistic) => {
         relative_velocity_in_km_per_second: relativeVelocityKmPerSeconds.length > 0 ? relativeVelocityKmPerSeconds : undefined
     }
 }
-
-module.exports = { buildMeteorEntity }

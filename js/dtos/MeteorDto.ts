@@ -1,6 +1,6 @@
 const { subWeeks, addWeeks } = require('date-fns')
 
-class MeteorDto {
+export class MeteorDto {
     constructor(data) {
         this.startDate = specifyStartDate(data)
         this.endDate = specifyEndDate(data)
@@ -36,5 +36,3 @@ const specifyEndDate = (data) => {
 }
 
 const specifyWereDangerous = (data) => data.were_dangerous === 'true'
-
-module.exports = MeteorDto

@@ -1,4 +1,4 @@
-const validate = (schema, property) => (req, res, next) => {
+export const validate = (schema, property) => (req, res, next) => {
     const { error } = schema.validate(req[property])
     if (error) {
         const { details } = error
@@ -9,5 +9,3 @@ const validate = (schema, property) => (req, res, next) => {
     }
     next()
 }
-
-module.exports = { validate }
