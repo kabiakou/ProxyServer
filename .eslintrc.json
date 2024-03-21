@@ -41,12 +41,23 @@
             "error",
             "never"
         ],
-        "max-len": "off",
+        "max-len": [
+            "warn",
+            {
+                "code": 120
+            }
+        ],
         "camelcase": "warn",
         "prefer-destructuring": "warn",
-        "arrow-body-style": "off",
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ],
         "no-return-await": "off",
-        "function-paren-newline": "off",
+        "function-paren-newline": [
+            "error",
+            "never"
+        ],
         "function-call-argument-newline": "off",
         "no-unused-vars": "off",
         "no-use-before-define": "off",

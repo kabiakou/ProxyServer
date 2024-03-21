@@ -35,8 +35,6 @@ const specifyEndDate = (data) => {
     return new Date(endDate)
 }
 
-const specifyWereDangerous = (data) => {
-    return data.were_dangerous === 'true'
-}
+const specifyWereDangerous = (data) => data.were_dangerous === 'true'
 
 module.exports = MeteorDto

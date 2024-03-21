@@ -16,7 +16,7 @@ const validateEndDate = (endDate) => {
 }
 
 const validateStartDateIsNotLargerThanEndDate = (startDate, endDate) => {
-    if (endDate !== undefined && startDate !== undefined && compareAsc(endDate, startDate) == -1) {
+    if (endDate !== undefined && startDate !== undefined && compareAsc(endDate, startDate) === -1) {
         throw new ValidationException(400, 'Parameter "end_date" should be larger or equal than parameter "start_date"')
     }
 }
