@@ -69,6 +69,8 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 - install eslint-config-airbnb-base - "npm install --save-dev eslint-config-airbnb-base"
 5. Eslint plugin for VSCode:
 - In VSCode, open the extension browser with the button on the left. Search for eslint. Install the top result, called “ESLint”
+6. ATTENTION - .eslintrc.json file is very sensitive to json format. In case of incorrect line (incorrect json format) all rules will be disabled.
+7. VSC "PROBLEMS" tab on toggle panel display errors and warnings
 
 API:
 ---------
