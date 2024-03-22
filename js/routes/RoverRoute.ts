@@ -1,9 +1,9 @@
 import * as express from 'express'
 import { schemas } from '../validators/schemas/ValidationSchema'
+import { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm } from '../controllers/RoverController'
+import { validate } from '../validators/SchemaValidator'
 
 export const roverRouter = express.Router()
-const { getRecentPhoto, getRoverForm, getRecentPhotoRoverForm } = require('../controllers/RoverController')
-const { validate } = require('../validators/SchemaValidator')
 
 roverRouter
     .post('/', validate(schemas.userDto, 'body'), getRecentPhoto)

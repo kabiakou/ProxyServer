@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import nunjucks from 'nunjucks'
 import path from 'path'
 import { meteorRouter } from './routes/MeteorRoute'
@@ -22,7 +22,7 @@ nunjucks.configure(['views/'], {
     noCache: true
 })
 
-app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message

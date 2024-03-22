@@ -1,6 +1,5 @@
-import { MeteorQueryRequest } from "../models/MeteorModels"
-
-const { subWeeks, addWeeks } = require('date-fns')
+import { MeteorQueryRequest } from '../models/MeteorModels'
+import { subWeeks, addWeeks } from 'date-fns'
 
 export class MeteorDto {
     startDate?: Date

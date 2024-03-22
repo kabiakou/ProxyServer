@@ -4,4 +4,3 @@ export interface MeteorQueryRequest {
     count?: string
     were_dangerous?: string
 }
-

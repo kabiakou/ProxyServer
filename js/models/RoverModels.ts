@@ -3,4 +3,3 @@ export interface UserQueryRequest {
     user_name?: string
     api_key?: string
 }
-

@@ -16,6 +16,12 @@ https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity
 - Start server command:
 "npm run start_server"
 
+- Eslint check command:
+"npm run lint"
+
+- Build command:
+"npm run build"
+
 - Environment
 1. Environment management:
 added "--env-file .env" to start_server script in package.json
@@ -83,8 +89,7 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 "tsc" - generate equalent files with .js extension in the folder from "tsconfig,json => outDir" field
 "npm i @typescript-eslint/eslint-plugin --save-dev" - Adds TypeScript-specific linting rules to ESLint (Essential for TypeScript-based projects, ensuring type safety and adherence to best practices )    
 "npm i ts-node-dev --save-dev" - It restarts target node process when any of required files changes (as standard node-dev) but shares Typescript compilation process between restarts.
-
-"npm i typescript-eslint --save-dev" - Tooling which enables you to use TypeScript with ESLint. Link: https://typescript-eslint.io/packages/typescript-eslint/
+"npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin" - Tooling which enables you to use TypeScript with ESLint. 
 
 API:
 ---------

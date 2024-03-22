@@ -1,4 +1,4 @@
-import { UserQueryRequest } from "../models/RoverModels"
+import { UserQueryRequest } from '../models/RoverModels'
 
 export class UserDto {
     userId?: string
