@@ -1,8 +1,8 @@
 export class MeteorPerDateDto {
     date?: String
-    meteors?: Array<any> // вопросики
+    meteors?: Array<any>
     constructor(date: String, meteors: Array<any>) {
-        this.date = date
+        this.date = date;
         this.meteors = meteors
     }
 }

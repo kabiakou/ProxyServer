@@ -44,9 +44,9 @@ Axios
 
 - Code validation library
 1. Library
-Joi
+Joi (The most powerful schema description language and data validator for JavaScript.)
 2. Install command: 
-"npm i joi --save"
+"npm i joi --save-dev"
 
 - Template response framework:
 1. Library
@@ -58,7 +58,8 @@ nunjacks
 1. Tool:
 ESlint
 2. ESlint settings file:
-.eslintrc.json
+.eslintrc.json (settings)
+.eslintignore (files/folders ignor)
 3. Packages:
 - "ESLint" - ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
 LinK - https://www.npmjs.com/package/eslint
@@ -77,11 +78,13 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 "npm install --save-dev typescript"
 2. Add a simple tsconfig.json that set the options to compile to ES5 and use CommonJS modules.
 3. To use tsconfig.json for the rest of this tutorial, invoke tsc without input files.
-4. 
+4. Usefull commands and libraries:
 "npm i -D ts-node @types/node @types/express @types/express-handlebars"
-npm install --save-dev @types/joi
-npm i @typescript-eslint/eslint-plugin --save-dev      
-npm i ts-node-dev --save-dev 
+"tsc" - generate equalent files with .js extension in the folder from "tsconfig,json => outDir" field
+"npm i @typescript-eslint/eslint-plugin --save-dev" - Adds TypeScript-specific linting rules to ESLint (Essential for TypeScript-based projects, ensuring type safety and adherence to best practices )    
+"npm i ts-node-dev --save-dev" - It restarts target node process when any of required files changes (as standard node-dev) but shares Typescript compilation process between restarts.
+
+"npm i typescript-eslint --save-dev" - Tooling which enables you to use TypeScript with ESLint. Link: https://typescript-eslint.io/packages/typescript-eslint/
 
 API:
 ---------
@@ -94,6 +97,10 @@ POST /rover/
     "user_name": "user_name",
     "api_key": "any_key_api"
 }
+
+## Get rover fprm ##
+- Request:
+GET /rover/form
 
 ## Get meteors ##
 - Request:

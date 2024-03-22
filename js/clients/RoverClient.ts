@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { format } from 'date-fns'
 
-// I tell ts compiler I am sure that env variables are not null
 const ROVER_PHOTOS_URL: string = process.env.NASA_API_ROVER_PHOTO_URL!
 const ROVER_MANIFEST_URL: string = process.env.NASA_API_ROVER_MANIFEST_URL!
 const DATE_FORMAT: string = process.env.DATE_FORMAT!
@@ -13,7 +12,7 @@ export const getRoverPhotosByDate = async (date?: Date, apiKey?: string) => awai
     }
 })
 
-export const getRoverManifiest = async (apiKey: string | undefined) => await axios.get(ROVER_MANIFEST_URL, {
+export const getRoverManifiest = async (apiKey?: string) => await axios.get(ROVER_MANIFEST_URL, {
     params: {
         api_key: apiKey
     }

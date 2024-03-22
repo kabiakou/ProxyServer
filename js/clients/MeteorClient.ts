@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { format } from 'date-fns'
 
-// I tell ts compiler I am sure that env variables are not null
 const API_KEY: string = process.env.NASA_API_KEY!
 const FEED_URl: string = process.env.NASA_API_FEED_URL!
 const DATE_FORMAT: string = process.env.DATE_FORMAT!
