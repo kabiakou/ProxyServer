@@ -1,7 +1,9 @@
 import { getRecentPhoto as getRecPhoto } from '../services/RoverService'
 import { UserDto } from '../dtos/UserDto'
+import { NextFunction, Request, Response } from 'express'
+import { UserQueryRequest } from '../models/RoverModels'
 
-export const getRecentPhoto = async (req, res, next) => {
+export const getRecentPhoto = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const userDto = new UserDto(req.body)
         const photoLink = await getRecPhoto(userDto)
@@ -11,7 +13,7 @@ export const getRecentPhoto = async (req, res, next) => {
     }
 }
 
-export const getRoverForm = async (req, res, next) => {
+export const getRoverForm = async (req: Request, res: Response, next: NextFunction) => {
     try {
         res.render('rover-form', {
             userIdLabel: 'User Id:',
@@ -23,11 +25,11 @@ export const getRoverForm = async (req, res, next) => {
     }
 }
 
-export const getRecentPhotoRoverForm = async (req, res, next) => {
+export const getRecentPhotoRoverForm = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const request = req.body
+        const request = req.body as UserQueryRequest
         const userDto = new UserDto(request)
-        const photoLink = await roverService.getRecentPhoto(userDto)
+        const photoLink = await getRecPhoto(userDto)
         res.render('recent-photo', {
             recentPhotoLink: photoLink,
             userId: request.user_id,

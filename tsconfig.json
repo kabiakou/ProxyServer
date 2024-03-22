@@ -7,7 +7,7 @@
         "moduleResolution": "node",
         "rootDir": "./",
         "esModuleInterop": true,
-        "noImplicitAny": false
+        // "noImplicitAny": false
     },
     "$schema": "https://json.schemastore.org/tsconfig",
     // "display": "Recommended",

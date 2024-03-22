@@ -22,7 +22,7 @@ nunjucks.configure(['views/'], {
     noCache: true
 })
 
-app.use((error, req, res, next) => {
+app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
     const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message

@@ -1,15 +1,21 @@
+import { MeteorQueryRequest } from "../models/MeteorModels"
+
 const { subWeeks, addWeeks } = require('date-fns')
 
 export class MeteorDto {
-    constructor(data) {
+    startDate?: Date
+    endDate?: Date
+    count?: number
+    wereDangerous: boolean
+    constructor(data: MeteorQueryRequest) {
         this.startDate = specifyStartDate(data)
         this.endDate = specifyEndDate(data)
-        this.count = data.count
+        this.count = Number(data.count)
         this.wereDangerous = specifyWereDangerous(data)
     }
 }
 
-const specifyStartDate = (data) => {
+const specifyStartDate = (data: MeteorQueryRequest) => {
     const defaultPeriod = 1
     const startDate = data.start_date
     const endDate = data.end_date
@@ -19,10 +25,10 @@ const specifyStartDate = (data) => {
     if (startDate === undefined && endDate !== undefined) {
         return subWeeks(endDate, defaultPeriod)
     }
-    return new Date(startDate)
+    return new Date(startDate as string)
 }
 
-const specifyEndDate = (data) => {
+const specifyEndDate = (data: MeteorQueryRequest) => {
     const defaultPeriod = 1
     const startDate = data.start_date
     const endDate = data.end_date
@@ -32,7 +38,7 @@ const specifyEndDate = (data) => {
     if (endDate === undefined && startDate !== undefined) {
         return addWeeks(startDate, defaultPeriod)
     }
-    return new Date(endDate)
+    return new Date(endDate as string)
 }
 
-const specifyWereDangerous = (data) => data.were_dangerous === 'true'
+const specifyWereDangerous = (data: MeteorQueryRequest) => data.were_dangerous === 'true'

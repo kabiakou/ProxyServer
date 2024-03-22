@@ -80,6 +80,7 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 4. 
 "npm i -D ts-node @types/node @types/express @types/express-handlebars"
 npm install --save-dev @types/joi
+npm i @typescript-eslint/eslint-plugin --save-dev      
 
 API:
 ---------
@@ -88,9 +89,9 @@ API:
 POST /rover/
 - Request body example:
 {
-    "user_id": "user id",
-    "user_name": "user name",
-    "api_key": "any key api"
+    "user_id": "user_id",
+    "user_name": "user_name",
+    "api_key": "any_key_api"
 }
 
 ## Get meteors ##

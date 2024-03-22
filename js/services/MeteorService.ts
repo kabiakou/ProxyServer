@@ -10,19 +10,19 @@ export const getMeteorsData = async (meteor: MeteorDto) => {
     return buildMeteorsDataResponse(nearEarthObjects, meteor)
 }
 
-const buildMeteorsDataResponse = (nearEarthObjects, meteorDto: MeteorDto) => {
+const buildMeteorsDataResponse = (nearEarthObjects: any, meteorDto: MeteorDto) => {
     if (nearEarthObjects === undefined) {
         return { data: {} }
     }
 
     let wereDangerous = false
-    const meteorsDataResponse = []
+    const meteorsDataResponse: Array<MeteorPerDateDto> = []
     Object.keys(nearEarthObjects).forEach((date) => {
         const startCount = 0
-        const meteors = []
+        const meteors: Array<any> = []
         nearEarthObjects[date]
             .slice(startCount, meteorDto.count)
-            .forEach((meteorStat) => {
+            .forEach((meteorStat: any) => {
                 meteors.push(buildMeteorEntity(meteorStat))
                 if (meteorDto.wereDangerous !== undefined && wereDangerous !== true) {
                     wereDangerous = meteorStat.is_potentially_hazardous_asteroid

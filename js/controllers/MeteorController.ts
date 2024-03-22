@@ -1,9 +1,11 @@
 import { getMeteorsData } from '../services/MeteorService'
 import { MeteorDto } from '../dtos/MeteorDto'
+import { NextFunction, Request, Response } from 'express'
+import { MeteorQueryRequest } from '../models/MeteorModels'
 
-export const getMeteors = async (req, res, next) => {
+export const getMeteors = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const requestParameters = req.query
+        const requestParameters = req.query as MeteorQueryRequest
         const meteorDto = new MeteorDto(requestParameters)
         const meteorsData = await getMeteorsData(meteorDto)
         res.render('index.html', {

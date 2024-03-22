@@ -1,9 +1,9 @@
-export const buildMeteorEntity = (meteorStatistic) => {
-    const closeApproachDates = []
-    const relativeVelocityKmPerSeconds = []
+export const buildMeteorEntity = (meteorStatistic: any) => {
+    const closeApproachDates: Array<any> = []
+    const relativeVelocityKmPerSeconds: Array<any> = []
     const closeApproachData = meteorStatistic.close_approach_data
     if (closeApproachData !== undefined) {
-        closeApproachData.forEach((approachData) => {
+        closeApproachData.forEach((approachData: any) => {
             closeApproachDates.push(approachData.close_approach_date_full)
 
             const relativeVelocity = approachData.relative_velocity

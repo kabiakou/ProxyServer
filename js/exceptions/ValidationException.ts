@@ -1,5 +1,6 @@
 export class ValidationException extends Error {
-    constructor(code, message) {
+    code?: number
+    constructor(code: number, message: string) {
         super()
         this.code = code
         this.message = message
