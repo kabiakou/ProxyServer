@@ -4,7 +4,7 @@
   "description": "Proxy server project",
   "main": "app.js",
   "scripts": {
-    "start_server": "node --watch --env-file .env ./js/app.js"
+    "dev": "ts-node-dev --watch --env-file .env ./js/app.ts"
   },
   "author": "Kabiakou",
   "license": "ISC",
@@ -24,6 +24,7 @@
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.4.3"
   }
 }

@@ -81,6 +81,7 @@ Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 "npm i -D ts-node @types/node @types/express @types/express-handlebars"
 npm install --save-dev @types/joi
 npm i @typescript-eslint/eslint-plugin --save-dev      
+npm i ts-node-dev --save-dev 
 
 API:
 ---------
