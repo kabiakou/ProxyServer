@@ -16,7 +16,6 @@ export const getMeteors = async (req: Request, res: Response, next: NextFunction
             }
         })
     } catch (error) {
-        console
         next(error)
     }
 }
