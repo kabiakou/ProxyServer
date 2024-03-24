@@ -105,7 +105,7 @@ POST /rover/
     "api_key": "any_key_api"
 }
 
-## Get rover fprm ##
+## Get rover form ##
 - Request:
 GET /rover/form
 
