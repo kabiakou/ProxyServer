@@ -6,7 +6,7 @@ import { MeteorQueryRequest } from '../models/MeteorModels'
 export const getMeteors = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const requestParameters = req.query as MeteorQueryRequest
-        const meteorDto = new MeteorDto(requestParameters)
+        const meteorDto: MeteorDto = new MeteorDto(requestParameters)
         const meteorsData = await getMeteorsData(meteorDto)
         res.render('index.html', {
             meteorsData: meteorsData.data.meteors,
