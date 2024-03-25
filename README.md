@@ -93,6 +93,13 @@ from "tsconfig,json => outDir" field
 5. "tsc" - generate equalent files with .js extension in the folder 
 
 
+Sentry:
+1. Create account in https://sentry.io/signup
+2. Create project ("Projects" tab)
+3. Setup sentry SDK. Link: https://docs.sentry.io/platforms/node/guides/express
+
+
+
 API:
 ---------
 ## Get recent photo ##
