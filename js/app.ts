@@ -20,6 +20,15 @@ app.use(Sentry.Handlers.tracingHandler())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'html')
+
+nunjucks.configure(['views/'], {
+    autoescape: false,
+    express: app,
+    noCache: true
+})
+
 app.use('/meteors', meteorRouter)
 app.use('/rover', roverRouter)
 
@@ -32,15 +41,6 @@ app.use((req, res) => {
     res.status(404).json({
         message: 'Page not found. Try another one.'
     })
-})
-
-app.set('views', path.join(__dirname, 'views'))
-app.set('view engine', 'html')
-
-nunjucks.configure(['views/'], {
-    autoescape: false,
-    express: app,
-    noCache: true
 })
 
 app.use(Sentry.Handlers.errorHandler())
