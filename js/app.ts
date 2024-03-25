@@ -45,7 +45,7 @@ app.use((req, res) => {
 
 app.use(Sentry.Handlers.errorHandler())
 
-app.use(function onError(error: any, req: Request, res: Response, next: NextFunction) {
+app.use((error: any, req: Request, res: Response, next: NextFunction) => {
     const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message
