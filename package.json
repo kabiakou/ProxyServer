@@ -11,6 +11,8 @@
   "author": "Kabiakou",
   "license": "ISC",
   "dependencies": {
+    "@sentry/node": "^7.108.0",
+    "@sentry/profiling-node": "^7.108.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.11.30",
     "@types/nunjucks": "^3.2.6",
