@@ -12,7 +12,14 @@ const DSN = process.env.SENTRY_DSN
 
 Sentry.init({
     dsn: DSN,
-    integrations: []
+    integrations: [
+        new Sentry.Integrations.Http({ tracing: true }),
+        new Sentry.Integrations.Express({ app }),
+        nodeProfilingIntegration()
+    ],
+    profilesSampleRate: 1.0,
+    tracesSampleRate: 1.0
+
 })
 app.use(Sentry.Handlers.requestHandler())
 app.use(Sentry.Handlers.tracingHandler())
