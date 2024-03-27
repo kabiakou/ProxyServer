@@ -12,9 +12,9 @@ export const getMeteorsData = async (meteor: MeteorDto) => {
 }
 
 const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto: MeteorDto) => {
-    if (nearEarthObjects === undefined) {
-        return { data: {} }
-    }
+    // if (nearEarthObjects === undefined) {
+    //     return { data: {} }
+    // }
 
     let wereDangerous: boolean = false
     const meteorsPerDateDto: MeteorPerDateDto[] = []
@@ -32,12 +32,13 @@ const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto:
         meteorsPerDateDto.push(new MeteorPerDateDto(date, meteors))
     })
 
-    const responseData: MeteorPerDateResponse = {
+    const response: MeteorPerDateResponse = {
         meteors: meteorsPerDateDto
     }
 
     if (meteorDto.wereDangerous) {
-        responseData.were_dangerous = wereDangerous
+        response.were_dangerous = wereDangerous
     }
-    return { data: { responseData: responseData } }
+
+    return response
 }

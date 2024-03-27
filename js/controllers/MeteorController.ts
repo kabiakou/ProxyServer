@@ -9,9 +9,9 @@ export const getMeteors = async (req: Request, res: Response, next: NextFunction
         const meteorDto: MeteorDto = new MeteorDto(requestParameters)
         const meteorsData = await getMeteorsData(meteorDto)
         res.render('index.html', {
-            meteorsData: meteorsData.data.meteors,
+            meteorsData: meteorsData.meteors,
             wereDangerous: {
-                value: meteorsData.data.were_dangerous,
+                value: meteorsData.were_dangerous,
                 param: req.query.were_dangerous
             }
         })
