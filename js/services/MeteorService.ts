@@ -2,11 +2,11 @@ import { getMeteorsWithinPeriod } from '../clients/MeteorClient'
 import { MeteorDto } from '../dtos/MeteorDto'
 import { MeteorPerDateDto } from '../dtos/MeteorPerDateDto'
 import { buildMeteorEntity } from '../mappers/MeteorMapper'
-import { MeteorEntity, MeteorsDataItem, NearEarthObjects } from '../models/MeteorModels'
+import { MeteorEntity, MeteorsDataItem, NearEarthObjects, MeteorPerDateResponse } from '../models/MeteorModels'
 
 export const getMeteorsData = async (meteor: MeteorDto) => {
-    const meteorsDataResponse = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
-    const nearEarthObjects = meteorsDataResponse.data.near_earth_objects as NearEarthObjects
+    const { data } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
+    const nearEarthObjects = data.near_earth_objects
 
     return buildMeteorsDataResponse(nearEarthObjects, meteor)
 }
@@ -16,8 +16,8 @@ const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto:
         return { data: {} }
     }
 
-    let wereDangerous = false
-    const meteorsDataResponse: MeteorPerDateDto[] = []
+    let wereDangerous: boolean = false
+    const meteorsPerDateDto: MeteorPerDateDto[] = []
     Object.keys(nearEarthObjects).forEach((date) => {
         const startCount = 0
         const meteors: MeteorEntity[] = []
@@ -29,13 +29,15 @@ const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto:
                     wereDangerous = meteorStat.is_potentially_hazardous_asteroid
                 }
             })
-        meteorsDataResponse.push(new MeteorPerDateDto(date, meteors))
+        meteorsPerDateDto.push(new MeteorPerDateDto(date, meteors))
     })
 
-    return {
-        data: {
-            meteors: meteorsDataResponse,
-            were_dangerous: meteorDto.wereDangerous ? wereDangerous : undefined
-        }
+    const responseData: MeteorPerDateResponse = {
+        meteors: meteorsPerDateDto
     }
+
+    if (meteorDto.wereDangerous) {
+        responseData.were_dangerous = wereDangerous
+    }
+    return { data: { responseData: responseData } }
 }

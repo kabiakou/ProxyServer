@@ -1,7 +1,8 @@
-export class ValidationException extends Error {
-    code?: number
+import { BaseException } from './BaseException'
+
+export class ValidationException extends BaseException {
     constructor(code: number, message: string) {
-        super()
+        super(code, message)
         this.code = code
         this.message = message
     }

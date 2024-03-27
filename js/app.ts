@@ -3,6 +3,7 @@ import nunjucks from 'nunjucks'
 import path from 'path'
 import { meteorRouter } from './routes/MeteorRoute'
 import { roverRouter } from './routes/RoverRoute'
+import { BaseException } from './exceptions/BaseException'
 
 const app = express()
 const PORT = process.env.PORT
@@ -22,7 +23,7 @@ nunjucks.configure(['views/'], {
     noCache: true
 })
 
-app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+app.use((error: BaseException, req: Request, res: Response, next: NextFunction): void => {
     const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message

@@ -1,3 +1,5 @@
+import { MeteorPerDateDto } from '../dtos/MeteorPerDateDto'
+
 export interface MeteorQueryRequest {
     start_date?: string
     end_date?: string
@@ -39,4 +41,9 @@ export interface MeteorEntity {
     is_potentially_hazardous_asteroid?: boolean
     close_approach_date_full?: string[]
     relative_velocity_in_km_per_second?: string[]
+}
+
+export interface MeteorPerDateResponse {
+    meteors: MeteorPerDateDto[],
+    were_dangerous?: boolean
 }

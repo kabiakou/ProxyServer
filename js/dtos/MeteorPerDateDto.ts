@@ -1,4 +1,4 @@
-import { MeteorEntity } from "../models/MeteorModels"
+import { MeteorEntity } from '../models/MeteorModels'
 
 export class MeteorPerDateDto {
     date?: string
