@@ -103,7 +103,7 @@ link: https://{your_account}.sentry.io/dashboard/default-overview/?statsPeriod=2
 - Issues:
 link: https://{your_account}.sentry.io/issues/?statsPeriod=24h or tab Issues
 - Profiling
-link: https://{your_account}.sentry.io/profiling/?statsPeriod=24h
+link: https://{your_account}.sentry.io/profiling/?statsPeriod=24h or tab Profiling
 
 
 API:
