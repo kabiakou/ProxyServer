@@ -26,7 +26,8 @@ export const getRoverForm = async (req: Request, res: Response, next: NextFuncti
 
 export const getRecentPhotoRoverForm = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { body } = req.body
+
+        const request = req.body //
         const userDto = new UserDto(body)
         const photoLink = await getRecPhoto(userDto)
         res.render('recent-photo', {
