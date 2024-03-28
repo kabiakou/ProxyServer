@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { format } from 'date-fns'
 import { RoverManifestResponse, RoverPhotosByDateResponse } from '../models/RoverModels'
 
@@ -6,7 +6,7 @@ const ROVER_PHOTOS_URL = process.env.NASA_API_ROVER_PHOTO_URL!
 const ROVER_MANIFEST_URL = process.env.NASA_API_ROVER_MANIFEST_URL!
 const DATE_FORMAT = process.env.DATE_FORMAT!
 
-export const getRoverPhotosByDate = async (date?: string, apiKey?: string): Promise<AxiosResponse<RoverPhotosByDateResponse, any>> =>
+export const getRoverPhotosByDate = async (date?: string, apiKey?: string): Promise<RoverPhotosByDateResponse> =>
     await axios.get(ROVER_PHOTOS_URL, {
         params: {
             earth_date: date! ? format(date, DATE_FORMAT) : undefined,
@@ -14,10 +14,9 @@ export const getRoverPhotosByDate = async (date?: string, apiKey?: string): Prom
         }
     })
 
-export const getRoverManifiest = async (apiKey?: string): Promise<AxiosResponse<RoverManifestResponse, any>> =>
+export const getRoverManifiest = async (apiKey?: string): Promise<RoverManifestResponse> =>
     await axios.get(ROVER_MANIFEST_URL, {
         params: {
             api_key: apiKey
-
         }
     })

@@ -5,12 +5,12 @@ import { buildMeteorEntity } from '../mappers/MeteorMapper'
 import { MeteorEntity, MeteorsDataItem, NearEarthObjects, MeteorPerDateResponse } from '../models/MeteorModels'
 
 export const getMeteorsData = async (meteor: MeteorDto) => {
-    const { data } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
-    return buildMeteorsDataResponse(data.near_earth_objects, meteor)
+    const { near_earth_objects } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
+    return buildMeteorsDataResponse(near_earth_objects, meteor)
 }
 
 const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto: MeteorDto): MeteorPerDateResponse => {
-    if (nearEarthObjects === undefined) {
+    if (!nearEarthObjects) {
         return {} as MeteorPerDateResponse
     }
 
