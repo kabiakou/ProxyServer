@@ -1,8 +1,9 @@
-const express = require('express')
-const nunjucks = require('nunjucks')
-const path = require('path')
-const meteorRoute = require('./routes/MeteorRoute')
-const roverRoute = require('./routes/RoverRoute')
+import express, { Request, Response, NextFunction } from 'express'
+import nunjucks from 'nunjucks'
+import path from 'path'
+import { meteorRouter } from './routes/MeteorRoute'
+import { roverRouter } from './routes/RoverRoute'
+import { BaseException } from './exceptions/BaseException'
 
 const app = express()
 const PORT = process.env.PORT
@@ -10,8 +11,8 @@ const PORT = process.env.PORT
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/meteors', meteorRoute)
-app.use('/rover', roverRoute)
+app.use('/meteors', meteorRouter)
+app.use('/rover', roverRouter)
 
 app.set('views', path.join(__dirname, 'views'))
 
@@ -22,7 +23,7 @@ nunjucks.configure(['views/'], {
     noCache: true
 })
 
-app.use((error, req, res, next) => {
+app.use((error: BaseException, req: Request, res: Response, next: NextFunction): void => {
     const statusCode = error.code || 500
     res.status(statusCode).json({
         message: error.message

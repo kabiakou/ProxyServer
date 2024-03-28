@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "CommonJS",
+        "outDir": "dist",
+        "strict": true,
+        "moduleResolution": "node",
+        "rootDir": "./",
+        "esModuleInterop": true,
+        // "noImplicitAny": false
+    },
+    "$schema": "https://json.schemastore.org/tsconfig",
+    // "display": "Recommended",
+    "include": [
+        "js/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}
