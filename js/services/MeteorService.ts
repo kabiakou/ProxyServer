@@ -5,16 +5,15 @@ import { buildMeteorEntity } from '../mappers/MeteorMapper'
 import { MeteorEntity, MeteorsDataItem, NearEarthObjects, MeteorPerDateResponse } from '../models/MeteorModels'
 
 export const getMeteorsData = async (meteor: MeteorDto) => {
-    const { data } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate) // добавить дженерик
-    const nearEarthObjects = data.near_earth_objects
-
-    return buildMeteorsDataResponse(nearEarthObjects, meteor)
+    const { data } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
+    return buildMeteorsDataResponse(data.near_earth_objects, meteor)
 }
 
 const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto: MeteorDto): MeteorPerDateResponse => {
     if (nearEarthObjects === undefined) {
         return {} as MeteorPerDateResponse
     }
+
     let wereDangerous = false
     const meteorsPerDateDto: MeteorPerDateDto[] = []
     Object.keys(nearEarthObjects).forEach((date) => {

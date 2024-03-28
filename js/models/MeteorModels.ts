@@ -47,3 +47,7 @@ export interface MeteorPerDateResponse {
     meteors: MeteorPerDateDto[],
     were_dangerous?: boolean
 }
+
+export interface MeteorsWithinPeriodResponse {
+    near_earth_objects: NearEarthObjects
+}

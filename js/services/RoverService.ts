@@ -3,9 +3,8 @@ import { UserDto } from '../dtos/UserDto'
 
 export const getRecentPhoto = async (userDto: UserDto): Promise<string> => {
     const { apiKey } = userDto
-    const manifest = await getRoverManifiest(apiKey)
-    const photosData = await getRoverPhotosByDate(manifest.data.photo_manifest.max_date, apiKey)
-    const recentPhoto: string = photosData.data.photos.pop().img_src
+    const { data: manifest } = await getRoverManifiest(apiKey)
+    const { data: photosByDate } = await getRoverPhotosByDate(manifest.photo_manifest.max_date, apiKey)
 
-    return recentPhoto
+    return photosByDate.photos.pop()?.img_src!
 }

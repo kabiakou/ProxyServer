@@ -14,7 +14,7 @@ export class MeteorDto {
     }
 }
 
-const specifyStartDate = (data: MeteorQueryRequest) => {
+const specifyStartDate = (data: MeteorQueryRequest): Date => {
     const defaultPeriod = 1
     const startDate = data.start_date
     const endDate = data.end_date
@@ -27,7 +27,7 @@ const specifyStartDate = (data: MeteorQueryRequest) => {
     return new Date(startDate as string)
 }
 
-const specifyEndDate = (data: MeteorQueryRequest) => {
+const specifyEndDate = (data: MeteorQueryRequest): Date => {
     const defaultPeriod = 1
     const startDate = data.start_date
     const endDate = data.end_date
@@ -40,4 +40,4 @@ const specifyEndDate = (data: MeteorQueryRequest) => {
     return new Date(endDate as string)
 }
 
-const specifyWereDangerous = (data: MeteorQueryRequest) => data.were_dangerous === 'true'
+const specifyWereDangerous = (data: MeteorQueryRequest): boolean => data.were_dangerous === 'true'
