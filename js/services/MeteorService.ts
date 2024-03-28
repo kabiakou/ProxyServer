@@ -11,12 +11,11 @@ export const getMeteorsData = async (meteor: MeteorDto) => {
     return buildMeteorsDataResponse(nearEarthObjects, meteor)
 }
 
-const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto: MeteorDto) => {
+const buildMeteorsDataResponse = (nearEarthObjects: NearEarthObjects, meteorDto: MeteorDto): MeteorPerDateResponse => {
     if (nearEarthObjects === undefined) {
-        return { data: {} }
+        return {} as MeteorPerDateResponse
     }
-
-    let wereDangerous: boolean = false
+    let wereDangerous = false
     const meteorsPerDateDto: MeteorPerDateDto[] = []
     Object.keys(nearEarthObjects).forEach((date) => {
         const startCount = 0

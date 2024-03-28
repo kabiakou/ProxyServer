@@ -41,7 +41,7 @@
         // disallows the last empty line
         "eol-last": [
             "error",
-            "never"//
+            "never"
         ],
         // disallows trailing commas
         "comma-dangle": [

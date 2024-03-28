@@ -1,18 +1,20 @@
 import { getMeteorsData } from '../services/MeteorService'
 import { MeteorDto } from '../dtos/MeteorDto'
 import { NextFunction, Request, Response } from 'express'
-import { MeteorPerDateResponse, MeteorQueryRequest } from '../models/MeteorModels'
 
 export const getMeteors = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const requestParameters = req.query as MeteorQueryRequest
-        const meteorDto: MeteorDto = new MeteorDto(requestParameters)
-        const meteorsData = await getMeteorsData(meteorDto) as MeteorPerDateResponse
-        
+        const { query } = req
+        const meteorsData = await getMeteorsData(new MeteorDto(query))
+
+        if (Object.keys(meteorsData).length === 0) {
+            res.render('empty-meteor-response.html')
+            return
+        }
         res.render('index.html', {
-            meteorsData: meteorsData?.meteors,
+            meteorsData: meteorsData.meteors,
             wereDangerous: {
-                value: meteorsData?.were_dangerous,
+                value: meteorsData.were_dangerous,
                 param: req.query.were_dangerous
             }
         })
