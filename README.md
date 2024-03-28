@@ -16,6 +16,12 @@ https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity
 - Start server command:
 "npm run start_server"
 
+- Eslint check command:
+"npm run lint"
+
+- Build command:
+"npm run build"
+
 - Environment
 1. Environment management:
 added "--env-file .env" to start_server script in package.json
@@ -42,11 +48,13 @@ Axios
 2. Install command: 
 "npm i axios --save"
 
+
 - Code validation library
 1. Library
-Joi
+Joi (The most powerful schema description language and data validator for JavaScript.)
 2. Install command: 
-"npm i joi --save"
+"npm i joi --save-dev"
+
 
 - Template response framework:
 1. Library
@@ -54,23 +62,36 @@ nunjacks
 2. Install command: 
 "npm i nunjacks --save"
 
+
 - Code analyzer
 1. Tool:
 ESlint
 2. ESlint settings file:
-.eslintrc.json
+.eslintrc.json (settings)
+.eslintignore (files/folders ignor)
 3. Packages:
 - "ESLint" - ESLint is a tool for identifying and reporting on patterns found in ECMAScript/JavaScript code.
 LinK - https://www.npmjs.com/package/eslint
-- "eslint-config-airbnb-base" - this package provides Airbnb's base JS .eslintrc (without React plugins) as an extensible shared config.
-Link - https://www.npmjs.com/package/eslint-config-airbnb-base
 4. Install command:
 - install and configure ESLint - "npm init @eslint/config"
-- install eslint-config-airbnb-base - "npm install --save-dev eslint-config-airbnb-base"
 5. Eslint plugin for VSCode:
 - In VSCode, open the extension browser with the button on the left. Search for eslint. Install the top result, called “ESLint”
 6. ATTENTION - .eslintrc.json file is very sensitive to json format. In case of incorrect line (incorrect json format) all rules will be disabled.
 7. VSC "PROBLEMS" tab on toggle panel display errors and warnings
+
+
+- Typescript migration:
+1. typescript compiler install command:
+"npm install --save-dev typescript"
+2. Add a simple tsconfig.json that set the options to compile to ES5 and use CommonJS modules.
+3. To use tsconfig.json for the rest of this tutorial, invoke tsc without input files.
+4. Usefull commands and libraries:
+"npm i -D ts-node @types/node @types/express" - this packages contains type definitions for node and express
+from "tsconfig,json => outDir" field  
+"npm i ts-node-dev --save-dev" - It restarts target node process when any of required files changes (as standard node-dev) but shares Typescript compilation process between restarts.
+"npm install --save-dev eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin" - Tooling which enables you to use TypeScript with ESLint. Adds TypeScript-specific linting rules to ESLint (Essential for TypeScript-based projects, ensuring type safety and adherence to best practices)
+5. "tsc" - generate equalent files with .js extension in the folder 
+
 
 API:
 ---------
@@ -79,10 +100,14 @@ API:
 POST /rover/
 - Request body example:
 {
-    "user_id": "user id",
-    "user_name": "user name",
-    "api_key": "any key api"
+    "user_id": "user_id",
+    "user_name": "user_name",
+    "api_key": "any_key_api"
 }
+
+## Get rover form ##
+- Request:
+GET /rover/form
 
 ## Get meteors ##
 - Request:

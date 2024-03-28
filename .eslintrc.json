@@ -4,8 +4,15 @@
         "commonjs": true,
         "es2021": true
     },
+    "root": true,
+    "parser": "@typescript-eslint/parser",
     "extends": [
-        "airbnb-base"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "plugins": [
+        "@typescript-eslint"
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
@@ -59,10 +66,11 @@
             "never"
         ],
         "function-call-argument-newline": "off",
-        "no-unused-vars": "off",
         "no-use-before-define": "off",
         "object-shorthand": "off",
         "arrow-parens": "off",
-        "eqeqeq": "warn"
+        "eqeqeq": "warn",
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn"
     }
 }
