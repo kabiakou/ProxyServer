@@ -40,11 +40,6 @@ nunjucks.configure(['views/'], {
 app.use('/meteors', meteorRouter)
 app.use('/rover', roverRouter)
 
-// sentry test api
-app.get('/debug-sentry', function mainHandler(req: Request, res: Response) {
-    throw new Error('My first Sentry error!')
-})
-
 app.use((req, res) => {
     res.status(404).json({
         message: 'Page not found. Try another one.'
