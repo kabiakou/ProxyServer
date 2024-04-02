@@ -106,6 +106,18 @@ link: https://{your_account}.sentry.io/issues/?statsPeriod=24h or tab Issues
 link: https://{your_account}.sentry.io/profiling/?statsPeriod=24h or tab Profiling
 
 
+Test:
+- Library:
+jest
+- Link:
+https://jestjs.io/docs/getting-started#using-typescript
+- Install command:
+"npm install --save-dev jest typescript ts-jest @types/jest" - typeScript preprocessor and dependencies
+"npx ts-jest config:init" - create a basic Jest configuration file which will inform Jest about how to handle .ts files correctly
+- Configuring Jest:
+https://jestjs.io/docs/configuration
+
+
 API:
 ---------
 ## Get recent photo ##
