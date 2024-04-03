@@ -3,92 +3,122 @@ import { getMeteorsData } from '../../services/MeteorService'
 import { MeteorPerDateResponse } from '../../models/MeteorModels'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { MeteorPerDateDto } from '../../dtos/MeteorPerDateDto'
+import { MeteorDto } from '../../dtos/MeteorDto'
+import withoutWereDangerous from '../resources/meteorController/WithoutWereDangerous.json'
+import wereDangerousIsFalse from '../resources/meteorController/WereDangerousIsFalse.json'
+import wereDangerousIsTrue from '../resources/meteorController/WereDangerousIsTrue.json'
 
 jest.mock('../../services/MeteorService')
 
+const EMPTY_PAGE = 'empty-meteor-response.html'
+const INDEX_PAGE = 'index.html'
+const ERROR = 'Error'
+
 const mockReq = createRequest()
-mockReq.query = {
-    start_date: '2024-03-13',
-    end_date: '2024-03-16'
-}
 const mockRes = createResponse()
-mockRes.render = jest.fn()
 const next = jest.fn()
-
 const mockGetMeteorsData = getMeteorsData as jest.MockedFunction<typeof getMeteorsData>
+let meteorDto: MeteorDto
 
-it('getMeteors return empty data', async () => {
-    // given
-    mockGetMeteorsData.mockResolvedValue({} as MeteorPerDateResponse)
-    // when
-    await getMeteors(mockReq, mockRes, next)
-    // then
-    expect(mockGetMeteorsData).toHaveBeenCalled()
-    expect(mockRes.render).toHaveBeenCalled()
-
-    expect(mockRes.render).toHaveBeenCalledWith('empty-meteor-response.html')
-    expect(mockRes.statusCode).toEqual(200)
+beforeAll(() => {
+    mockRes.render = jest.fn()
+    mockReq.query = {
+        start_date: '2024-03-13',
+        end_date: '2024-03-16'
+    }
+    const meteorQueryRequest = {
+        start_date: '2024-03-13',
+        end_date: '2024-03-16'
+    }
+    meteorDto = new MeteorDto(meteorQueryRequest)
 })
 
-it('getMeteors return data without were_dangerous request param', async () => {
-    // given
-    const option = { "meteorsData": [{ "date": "16-03-2024", "meteors": [{ "close_approach_date_full": ["12-05-2024"], "diameter_meters": { "estimated_diameter_max": 2, "estimated_diameter_min": 1 }, "id": "id", "is_potentially_hazardous_asteroid": false, "name": "name", "relative_velocity_in_km_per_second": ["1234"] }] }], "wereDangerous": { "param": undefined, "value": false } }
+describe('getMeteors function', () => {
+    it('return empty data', async () => {
+        // given
+        mockGetMeteorsData.mockResolvedValue({} as MeteorPerDateResponse)
+        // when
+        await getMeteors(mockReq, mockRes, next)
+        // then
+        expect(mockGetMeteorsData).toHaveBeenCalled()
+        expect(mockRes.render).toHaveBeenCalled()
 
-    mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
-    // when
-    await getMeteors(mockReq, mockRes, next)
-    // then
-    expect(mockGetMeteorsData).toHaveBeenCalled()
-    expect(mockRes.render).toHaveBeenCalled()
-
-    expect(mockRes.render).toHaveBeenCalledWith('index.html', option)
-    expect(mockRes.statusCode).toEqual(200)
-})
-
-it('getMeteors return data if were_dangerous request param is false', async () => {
-    // given
-    const option = { "meteorsData": [{ "date": "16-03-2024", "meteors": [{ "close_approach_date_full": ["12-05-2024"], "diameter_meters": { "estimated_diameter_max": 2, "estimated_diameter_min": 1 }, "id": "id", "is_potentially_hazardous_asteroid": false, "name": "name", "relative_velocity_in_km_per_second": ["1234"] }] }], "wereDangerous": { "param": "false", "value": false } }
-    mockReq.query.were_dangerous = 'false'
-
-    mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
-    // when
-    await getMeteors(mockReq, mockRes, next)
-    // then
-    expect(mockGetMeteorsData).toHaveBeenCalled()
-    expect(mockRes.render).toHaveBeenCalled()
-
-    expect(mockRes.render).toHaveBeenCalledWith('index.html', option)
-    expect(mockRes.statusCode).toEqual(200)
-})
-
-it('getMeteors return data if were_dangerous request param is true', async () => {
-    // given
-    const option = { "meteorsData": [{ "date": "16-03-2024", "meteors": [{ "close_approach_date_full": ["12-05-2024"], "diameter_meters": { "estimated_diameter_max": 2, "estimated_diameter_min": 1 }, "id": "id", "is_potentially_hazardous_asteroid": false, "name": "name", "relative_velocity_in_km_per_second": ["1234"] }] }], "wereDangerous": { "param": "true", "value": false } }
-    mockReq.query.were_dangerous = 'true'
-
-    mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
-    // when
-    await getMeteors(mockReq, mockRes, next)
-    // then
-    expect(mockGetMeteorsData).toHaveBeenCalled()
-    expect(mockRes.render).toHaveBeenCalled()
-
-    expect(mockRes.render).toHaveBeenCalledWith('index.html', option)
-    expect(mockRes.statusCode).toEqual(200)
-})
-
-it('getMeteors throw error', async () => {
-    // given
-    mockGetMeteorsData.mockImplementation(() => {
-        throw new Error('Something goes wrong in getMeteors function')
+        expect(mockGetMeteorsData).toHaveBeenCalledWith(meteorDto)
+        expect(mockRes.render).toHaveBeenCalledWith(EMPTY_PAGE)
+        expect(mockRes.statusCode).toEqual(200)
     })
-    // when
-    await getMeteors(mockReq, mockRes, next)
-    // then
-    expect(mockGetMeteorsData).toHaveBeenCalled()
-    expect(mockRes.render).not.toHaveBeenCalled()
+})
 
-    expect(next).toHaveBeenCalledWith(new Error('Something goes wrong in getMeteors function'))
+describe('getMeteors function', () => {
+    it('return data without were_dangerous request param', async () => {
+        // given
+        meteorDto.wereDangerous = false
+
+        mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
+        // when
+        await getMeteors(mockReq, mockRes, next)
+        // then
+        expect(mockGetMeteorsData).toHaveBeenCalled()
+        expect(mockRes.render).toHaveBeenCalled()
+
+        expect(mockGetMeteorsData).toHaveBeenCalledWith(meteorDto)
+        expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, withoutWereDangerous)
+        expect(mockRes.statusCode).toEqual(200)
+    })
+})
+
+describe('getMeteors function', () => {
+    it('return data if were_dangerous request param is false', async () => {
+        // given
+        mockReq.query.were_dangerous = 'false'
+        meteorDto.wereDangerous = false
+
+        mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
+        // when
+        await getMeteors(mockReq, mockRes, next)
+        // then
+        expect(mockGetMeteorsData).toHaveBeenCalled()
+        expect(mockRes.render).toHaveBeenCalled()
+
+        expect(mockGetMeteorsData).toHaveBeenCalledWith(meteorDto)
+        expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, wereDangerousIsFalse)
+        expect(mockRes.statusCode).toEqual(200)
+    })
+})
+
+describe('getMeteors function', () => {
+    it('return data if were_dangerous request param is true', async () => {
+        // given
+        mockReq.query.were_dangerous = 'true'
+        meteorDto.wereDangerous = true
+
+        mockGetMeteorsData.mockResolvedValue(buildMeteorPerDateResponse())
+        // when
+        await getMeteors(mockReq, mockRes, next)
+        // then
+        expect(mockGetMeteorsData).toHaveBeenCalled()
+        expect(mockRes.render).toHaveBeenCalled()
+
+        expect(mockGetMeteorsData).toHaveBeenCalledWith(meteorDto)
+        expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, wereDangerousIsTrue)
+        expect(mockRes.statusCode).toEqual(200)
+    })
+})
+
+describe('getMeteors function', () => {
+    it('getMeteors throw error', async () => {
+        // given
+        mockGetMeteorsData.mockImplementation(() => { throw new Error(ERROR) })
+        // when
+        await getMeteors(mockReq, mockRes, next)
+        // then
+        expect(mockGetMeteorsData).toHaveBeenCalled()
+        expect(mockRes.render).not.toHaveBeenCalled()
+        expect(next).toHaveBeenCalled()
+
+        expect(mockGetMeteorsData).toHaveBeenCalledWith(meteorDto)
+        expect(next).toHaveBeenCalledWith(new Error(ERROR))
+    })
 })
 
 const buildMeteorPerDateResponse = (): MeteorPerDateResponse => {

@@ -7,10 +7,9 @@
         "moduleResolution": "node",
         "rootDir": "./",
         "esModuleInterop": true,
-        // "noImplicitAny": false
+        "resolveJsonModule": true,
     },
     "$schema": "https://json.schemastore.org/tsconfig",
-    // "display": "Recommended",
     "include": [
         "js/**/*"
     ],

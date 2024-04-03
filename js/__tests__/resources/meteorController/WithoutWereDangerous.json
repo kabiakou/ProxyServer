@@ -1,0 +1,27 @@
+{
+    "meteorsData": [
+        {
+            "date": "16-03-2024",
+            "meteors": [
+                {
+                    "close_approach_date_full": [
+                        "12-05-2024"
+                    ],
+                    "diameter_meters": {
+                        "estimated_diameter_max": 2,
+                        "estimated_diameter_min": 1
+                    },
+                    "id": "id",
+                    "is_potentially_hazardous_asteroid": false,
+                    "name": "name",
+                    "relative_velocity_in_km_per_second": [
+                        "1234"
+                    ]
+                }
+            ]
+        }
+    ],
+    "wereDangerous": {
+        "value": false
+    }
+}
