@@ -4,9 +4,9 @@ import { MeteorPerDateResponse } from '../../models/MeteorModels'
 import { createRequest, createResponse } from 'node-mocks-http'
 import { MeteorPerDateDto } from '../../dtos/MeteorPerDateDto'
 import { MeteorDto } from '../../dtos/MeteorDto'
-import withoutWereDangerous from '../resources/meteorController/WithoutWereDangerous.json'
-import wereDangerousIsFalse from '../resources/meteorController/WereDangerousIsFalse.json'
-import wereDangerousIsTrue from '../resources/meteorController/WereDangerousIsTrue.json'
+import withoutWereDangerous from '../resources/controllers/WithoutWereDangerous.json'
+import wereDangerousIsFalse from '../resources/controllers/WereDangerousIsFalse.json'
+import wereDangerousIsTrue from '../resources/controllers/WereDangerousIsTrue.json'
 
 jest.mock('../../services/MeteorService')
 
