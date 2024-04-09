@@ -6,6 +6,7 @@ import { RoverManifestResponse, RoverPhotosByDateResponse } from '../../models/R
 jest.mock('../../clients/RoverClient')
 
 const ERROR = 'Error'
+const API_KEY = 'apiKey'
 
 const mockGetRoverManifiest = getRoverManifiest as jest.MockedFunction<typeof getRoverManifiest>
 const mockGetRoverPhotosByDate = getRoverPhotosByDate as jest.MockedFunction<typeof getRoverPhotosByDate>
@@ -35,14 +36,14 @@ describe('getRecentPhoto function', () => {
         expect(mockGetRoverManifiest).toHaveBeenCalled()
         expect(mockGetRoverPhotosByDate).toHaveBeenCalled()
 
-        expect(mockGetRoverManifiest).toHaveBeenCalledWith('apiKey')
+        expect(mockGetRoverManifiest).toHaveBeenCalledWith(API_KEY)
         expect(mockGetRoverPhotosByDate).toHaveBeenCalledWith('2024-03-03', 'apiKey')
         expect(photoLink).toEqual('2222')
     })
 })
 
 describe('getRecentPhoto function', () => {
-    it('getRoverManifiest throw error', async () => {
+    it('getRoverManifiest function throw error', async () => {
         // given
         mockGetRoverManifiest.mockImplementation(() => { throw new Error(ERROR) })
         // when
@@ -55,7 +56,7 @@ describe('getRecentPhoto function', () => {
         expect(mockGetRoverManifiest).toHaveBeenCalled()
         expect(mockGetRoverPhotosByDate).not.toHaveBeenCalled()
 
-        expect(mockGetRoverManifiest).toHaveBeenCalledWith('apiKey')
+        expect(mockGetRoverManifiest).toHaveBeenCalledWith(API_KEY)
     })
 })
 
