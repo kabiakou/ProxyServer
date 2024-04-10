@@ -40,9 +40,7 @@ describe('getRecentPhoto function', () => {
         expect(mockGetRoverPhotosByDate).toHaveBeenCalledWith('2024-03-03', 'apiKey')
         expect(photoLink).toEqual('2222')
     })
-})
 
-describe('getRecentPhoto function', () => {
     it('getRoverManifiest function throw error', async () => {
         // given
         mockGetRoverManifiest.mockImplementation(() => { throw new Error(ERROR) })

@@ -56,9 +56,7 @@ describe('getRecentPhoto function', () => {
         expect(mockRes.redirect).toHaveBeenCalledWith(LINK)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getRecentPhoto function', () => {
     it('getRecentPhoto throw exception', async () => {
         // given
         mockGetRecPhoto.mockImplementation(() => { throw new Error(ERROR) })
@@ -83,9 +81,7 @@ describe('getRoverForm function', () => {
 
         expect(mockRes.render).toHaveBeenCalledWith(RENDER_ROVER_FORM, formParams)
     })
-})
 
-describe('getRoverForm function', () => {
     it('render throw exception', async () => {
         // given
         const mockRender = mockRes.render as jest.MockedFunction<typeof mockRes.render>
@@ -115,9 +111,7 @@ describe('getRecentPhotoRoverForm function', () => {
         expect(mockRes.render).toHaveBeenCalledWith(RENDER_RESENT_PHOTO, renderParams)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getRecentPhotoRoverForm function', () => {
     it('getRecentPhoto throw error', async () => {
         // given
         mockGetRecPhoto.mockImplementation(() => { throw new Error(ERROR) })

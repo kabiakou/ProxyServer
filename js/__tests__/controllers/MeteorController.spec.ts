@@ -47,9 +47,7 @@ describe('getMeteors function', () => {
         expect(mockRes.render).toHaveBeenCalledWith(EMPTY_PAGE)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getMeteors function', () => {
     it('return data without were_dangerous request param', async () => {
         // given
         meteorDto.wereDangerous = false
@@ -65,9 +63,7 @@ describe('getMeteors function', () => {
         expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, withoutWereDangerous)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getMeteors function', () => {
     it('return data if were_dangerous request param is false', async () => {
         // given
         mockReq.query.were_dangerous = 'false'
@@ -84,9 +80,7 @@ describe('getMeteors function', () => {
         expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, wereDangerousIsFalse)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getMeteors function', () => {
     it('return data if were_dangerous request param is true', async () => {
         // given
         mockReq.query.were_dangerous = 'true'
@@ -103,9 +97,7 @@ describe('getMeteors function', () => {
         expect(mockRes.render).toHaveBeenCalledWith(INDEX_PAGE, wereDangerousIsTrue)
         expect(mockRes.statusCode).toEqual(200)
     })
-})
 
-describe('getMeteors function', () => {
     it('getMeteors throw error', async () => {
         // given
         mockGetMeteorsData.mockImplementation(() => { throw new Error(ERROR) })

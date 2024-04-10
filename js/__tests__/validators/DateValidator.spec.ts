@@ -13,15 +13,11 @@ describe('validateStartDate function', () => {
     it('input param is valid', async () => {
         await expect(() => validateStartDate('2024-03-04')).not.toThrow()
     })
-})
 
-describe('validateStartDate function', () => {
     it('input param is incorrect', async () => {
         await expect(() => validateStartDate('qwe')).toThrow(startDateError)
     })
-})
 
-describe('validateStartDate function', () => {
     it('input param is undefined', async () => {
         await expect(() => validateStartDate(undefined)).not.toThrow()
     })
@@ -31,15 +27,11 @@ describe('validateEndDate function', () => {
     it('input param is valid', async () => {
         await expect(() => validateEndDate('2024-03-04')).not.toThrow()
     })
-})
 
-describe('validateEndDate function', () => {
     it('input param is incorrect', async () => {
         await expect(() => validateEndDate('qwe')).toThrow(endDAteError)
     })
-})
 
-describe('validateEndDate function', () => {
     it('input param is undefined', async () => {
         await expect(() => validateEndDate(undefined)).not.toThrow()
     })
@@ -49,28 +41,19 @@ describe('validateStartDateIsNotLargerThanEndDate function', () => {
     it('input params is correct', async () => {
         await expect(() => validateStartDateIsNotLargerThanEndDate('2024-03-04', '2024-03-05')).not.toThrow()
     })
-})
 
-describe('validateStartDateIsNotLargerThanEndDate function', () => {
     it('startDate is undefined', async () => {
         await expect(() => validateStartDateIsNotLargerThanEndDate(undefined, '2024-03-05')).not.toThrow()
     })
-})
 
-describe('validateStartDateIsNotLargerThanEndDate function', () => {
     it('endDAte is undefined', async () => {
         await expect(() => validateStartDateIsNotLargerThanEndDate('2024-03-05', undefined)).not.toThrow()
     })
-})
 
-describe('validateStartDateIsNotLargerThanEndDate function', () => {
     it('all input params are undefined', async () => {
         await expect(() => validateStartDateIsNotLargerThanEndDate(undefined, undefined)).not.toThrow()
     })
-})
 
-
-describe('validateStartDateIsNotLargerThanEndDate function', () => {
     it('startDate is larger tham end Date', async () => {
         await expect(() => validateStartDateIsNotLargerThanEndDate('2024-03-07', '2024-03-05')).toThrow(comparisonError)
     })
