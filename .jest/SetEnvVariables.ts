@@ -1,0 +1,1 @@
+process.env.DATE_FORMAT = 'yyyy-MM-dd'

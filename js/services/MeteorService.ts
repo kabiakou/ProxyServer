@@ -4,7 +4,7 @@ import { MeteorPerDateDto } from '../dtos/MeteorPerDateDto'
 import { buildMeteorEntity } from '../mappers/MeteorMapper'
 import { MeteorEntity, MeteorsDataItem, NearEarthObjects, MeteorPerDateResponse } from '../models/MeteorModels'
 
-export const getMeteorsData = async (meteor: MeteorDto) => {
+export const getMeteorsData = async (meteor: MeteorDto): Promise<MeteorPerDateResponse> => {
     const { data } = await getMeteorsWithinPeriod(meteor.startDate, meteor.endDate)
 
     return buildMeteorsDataResponse(data.near_earth_objects, meteor)
