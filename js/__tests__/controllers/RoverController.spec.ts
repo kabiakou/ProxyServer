@@ -38,7 +38,7 @@ beforeAll(() => {
     mockReq.body = {
         user_id: 'userId',
         user_name: 'userName',
-        api_key: 'apiKey',
+        api_key: 'apiKey'
     }
 })
 
